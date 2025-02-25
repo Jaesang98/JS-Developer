@@ -1,0 +1,122 @@
+@use 'sass:map';
+
+// 폰트 패밀리
+$font-family: (
+    default: (
+        'Wanted Sans Std Variable',
+        'Wanted Sans Std',
+        -apple-system,
+        BlinkMacSystemFont,
+        system-ui,
+        'Segoe UI',
+        Roboto,
+        'Helvetica Neue',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        sans-serif
+    )
+);
+
+// 폰트
+$fonts: (
+    T1: (
+        font-weight: 600,
+        font-size: 36px,
+        line-height: 44px
+    ),
+    T2: (
+        font-weight: 600,
+        font-size: 32px
+    ),
+    SubT: (
+        font-weight: 600,
+        font-size: 26px
+    ),
+    B1: (
+        font-weight: 400,
+        font-size: 18px,
+        line-height: 32px,
+        letter-spacing: 0.08%
+    ),
+    B2: (
+        font-weight: 500,
+        font-size: 18px,
+        line-height: 24px
+    ),
+    B3: (
+        font-weight: 500,
+        font-size: 16px,
+        line-height: 22px
+    ),
+    B4: (
+        font-weight: 400,
+        font-size: 16px,
+        line-height: 22px,
+        letter-spacing: 0.08%
+    ),
+    Btn-text-1: (
+        font-weight: 600,
+        font-size: 16px
+    ),
+    Btn-text-2: (
+        font-weight: 500,
+        font-size: 16px
+    ),
+    Btn-text-3: (
+        font-weight: 600,
+        font-size: 14px
+    ),
+    Btn-text-4: (
+        font-weight: 500,
+        font-size: 14px
+    ),
+    Card-title: (
+        font-weight: 500,
+        font-size: 22px,
+        letter-spacing: -1%
+    ),
+    Card-Body: (
+        font-weight: 400,
+        font-size: 16px,
+        line-height: 24px,
+        letter-spacing: 0.08%
+    ),
+    Main-body: (
+        font-weight: 20,
+        font-size: 24px,
+        line-height: 32px,
+        letter-spacing: -0.6%
+    ),
+    Main-Btn-1: (
+        font-weight: 600,
+        font-size: 20px
+    ),
+    Main-Btn-2: (
+        font-weight: 500,
+        font-size: 20px
+    )
+);
+
+// 폰트 스타일
+@mixin font-style($key) {
+    $font: map.get($fonts, $key);
+
+    font-family: #{map.get($font-family, default)};
+
+    @if map.has-key($font, font-weight) {
+        font-weight: map.get($font, font-weight);
+    }
+
+    @if map.has-key($font, font-size) {
+        font-size: map.get($font, font-size);
+    }
+
+    @if map.has-key($font, line-height) {
+        line-height: map.get($font, line-height);
+    }
+
+    @if map.has-key($font, letter-spacing) {
+        letter-spacing: map.get($font, letter-spacing);
+    }
+}

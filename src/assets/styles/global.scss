@@ -1,0 +1,10 @@
+@use 'sass:map';
+@use 'font' as *;
+@use 'color' as *;
+
+//폰트, 컬러 사용 예시
+.test {
+    @include font-style(Main-body);
+    @include color(main, primary);
+    @include bg-color(light, 600);
+}

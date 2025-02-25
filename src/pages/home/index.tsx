@@ -3,6 +3,7 @@ import { useUserInfoStore } from '@/stores/userInfo';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import '@/assets/styles/global.scss';
 
 function Home() {
     const userStore = useUserInfoStore();
@@ -54,7 +55,7 @@ function Home() {
         <>
             <button onClick={fetchServer}>서버통신</button>
             <div>zuntand 테스트값: {JSON.stringify(userStore.userInfo)}</div>
-            <div>*React JSX에서는 객체나 배열을 직접 출력할 수 없기 때문에, 문자열로 변환*</div>
+            <div className="test">*React JSX에서는 객체나 배열을 직접 출력할 수 없기 때문에, 문자열로 변환*</div>
             <br></br>
             <button onClick={pageOpen}>라우터 이동테스트1</button>
             <button onClick={pageOpen2}>라우터 이동테스트2</button>
