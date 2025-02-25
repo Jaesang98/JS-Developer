@@ -4,7 +4,7 @@
 
 //폰트, 컬러 사용 예시
 .test {
-    @include font-style(Main-body);
+    @include font-style(Main-title);
     @include color(main, primary);
     @include bg-color(light, 600);
 }
