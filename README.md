@@ -102,3 +102,6 @@ project/
 
     sass (scss)
         - npm install sass
+
+    reset-css
+        - npm i reset-css
