@@ -9,8 +9,20 @@
     @include bg-color(light, 600);
 }
 
+/*레이아웃*/
+.container {
+    @include bg-color(light, white);
+    height: 100svh;
+}
+
+.contentWrap {
+    margin: 0 auto;
+    min-width: 1200px;
+    width: 1200px;
+    scroll-behavior: smooth; // 스크롤 시 부드러운 애니메이션
+}
+
 /* 공통 사용 */
-//버튼
 .btn1 {
     @include color(main, white);
     @include bg-color(main, primary2);
@@ -23,13 +35,6 @@
     &:hover {
         @include bg-color(main, primary);
     }
-}
-
-//전체레이아웃
-.container {
-    @include bg-color(light, white);
-    display: flex;
-    height: 100svh;
 }
 
 /*헤더*/
@@ -75,4 +80,23 @@
 .header-control {
     display: flex;
     justify-self: end;
+}
+
+/*푸터*/
+.footer {
+    @include bg-color(light, 200);
+    padding: 64px 252px 74px 252px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.footer-title {
+    @include font-style(Main-body);
+    @include color(light, 900);
+}
+
+.footer-item {
+    @include font-style(B4);
+    @include color(light, 800);
 }
