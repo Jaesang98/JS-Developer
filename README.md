@@ -105,3 +105,6 @@ project/
 
     reset-css
         - npm i reset-css
+
+    sanitize.css
+    - npm i sanitize.css
