@@ -1,0 +1,7 @@
+@use 'sass:map';
+@use './variables' as *;
+
+//컬러 가져오기
+@function color($theme, $color) {
+    @return map.get(map.get($colors, $theme), $color);
+}

@@ -1,0 +1,18 @@
+@use '/src/assets/styles/abstracts/mixins' as *;
+@use '/src/assets/styles/abstracts/variables' as *;
+@use '/src/assets/styles/abstracts/function' as *;
+
+/*레이아웃*/
+.container {
+    @include bg-color(light, white);
+    height: 100svh;
+    background-image: url('../img/lightbg.png');
+    background-position: top 0px right 0px;
+}
+
+.contentWrap {
+    margin: 0 auto;
+    min-width: 1200px;
+    width: 1200px;
+    scroll-behavior: smooth;
+}

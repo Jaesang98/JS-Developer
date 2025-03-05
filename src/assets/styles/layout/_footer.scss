@@ -1,0 +1,22 @@
+@use '/src/assets/styles/abstracts/mixins' as *;
+@use '/src/assets/styles/abstracts/variables' as *;
+@use '/src/assets/styles/abstracts/function' as *;
+
+/*푸터*/
+.footer {
+    @include bg-color(light, 200);
+    padding: 64px 252px 74px 252px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.footer-title {
+    @include font-style(Main-body);
+    @include color(light, 900);
+}
+
+.footer-item {
+    @include font-style(B4);
+    @include color(light, 800);
+}

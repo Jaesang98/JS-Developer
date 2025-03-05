@@ -1,0 +1,39 @@
+@use '/src/assets/styles/abstracts/mixins' as *;
+@use '/src/assets/styles/abstracts/variables' as *;
+@use '/src/assets/styles/abstracts/function' as *;
+
+// /*메인*/
+.home-content {
+    width: 1200px;
+    height: 1016px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 200px;
+}
+
+.home-title {
+    @include font-style(Main-title);
+    @include color(light, black);
+}
+
+.home-subtitle {
+    @include font-style(Main-body);
+    @include color(light, 800);
+    width: 731px;
+    text-align: center;
+}
+
+.home-hr {
+    width: 100%; // 가로 길이 설정
+    border: none; // 기본 border 제거
+    border-top: 1px solid transparent; // 상단 테두리 적용
+    border-image-source: linear-gradient(90deg, rgba(206, 207, 223, 0) 0%, #cecfdf 50%, rgba(206, 207, 223, 0) 100%);
+    border-image-slice: 1;
+}
+
+.home-btnWrap {
+    display: flex;
+    gap: 16px;
+}

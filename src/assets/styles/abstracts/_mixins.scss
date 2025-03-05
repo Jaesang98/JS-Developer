@@ -1,0 +1,34 @@
+@use 'sass:map';
+@use './variables' as *;
+
+// 컬러 스타일
+@mixin color($theme, $color) {
+    color: map.get(map.get($colors, $theme), $color);
+}
+
+@mixin bg-color($theme, $color) {
+    background-color: map.get(map.get($colors, $theme), $color);
+}
+
+// 폰트 스타일
+@mixin font-style($key) {
+    $font: map.get($fonts, $key);
+
+    font-family: #{map.get($font-family, default)};
+
+    @if map.has-key($font, font-weight) {
+        font-weight: map.get($font, font-weight);
+    }
+
+    @if map.has-key($font, font-size) {
+        font-size: map.get($font, font-size);
+    }
+
+    @if map.has-key($font, line-height) {
+        line-height: map.get($font, line-height);
+    }
+
+    @if map.has-key($font, letter-spacing) {
+        letter-spacing: map.get($font, letter-spacing);
+    }
+}
