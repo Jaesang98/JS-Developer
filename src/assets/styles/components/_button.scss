@@ -39,7 +39,7 @@
     @include bg-color(main, white);
     padding: 19.5px 70px 20.5px 26px;
     border-radius: 12px;
-    border: 2px solid #{color(light, 300)};
+    border: 2px solid color(light, 300);
     cursor: pointer;
     position: relative;
 

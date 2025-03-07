@@ -15,7 +15,7 @@
 //폰트, 컬러 사용 예시
 .test {
     @include font-style(Main-title);
-    @include color(main, primary);
-    @include bg-color(light, 600);
-    border: 1px solid #{color(light, btn)};
+    color: color(main, primary);
+    background-color: color(light, 600);
+    border: 1px solid color(light, btn);
 }
