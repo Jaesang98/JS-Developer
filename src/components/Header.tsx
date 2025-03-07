@@ -1,5 +1,3 @@
-import '@/assets/styles/global.scss';
-
 function Header() {
     return (
         <div className="header">

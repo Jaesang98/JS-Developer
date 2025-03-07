@@ -1,5 +1,3 @@
-import '@/assets/styles/global.scss';
-
 function Footer() {
     return (
         <div className="footer">

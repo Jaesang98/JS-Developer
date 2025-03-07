@@ -1,4 +1,3 @@
-import '@/assets/styles/global.scss';
 import MainLayout from '@/components/MainLayout';
 
 function Home() {

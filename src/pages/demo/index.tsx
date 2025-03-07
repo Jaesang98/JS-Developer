@@ -3,7 +3,6 @@ import { useUserInfoStore } from '@/stores/userInfo';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import '@/assets/styles/global.scss';
 
 function Home() {
     const userStore = useUserInfoStore();
