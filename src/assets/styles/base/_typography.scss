@@ -1,0 +1,124 @@
+/*폰트 스타일링*/
+// 폰트 패밀리
+$font-family: (
+    default: (
+        'Wanted Sans Std Variable',
+        'Wanted Sans Std',
+        -apple-system,
+        BlinkMacSystemFont,
+        system-ui,
+        'Segoe UI',
+        Roboto,
+        'Helvetica Neue',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        sans-serif
+    )
+);
+
+// 폰트
+$fonts: (
+    T1: (
+        font-weight: 600,
+        font-size: 36px,
+        line-height: 44px,
+        letter-spacing: 0%
+    ),
+    T2: (
+        font-weight: 600,
+        font-size: 32px,
+        line-height: 100%,
+        letter-spacing: 0%
+    ),
+    SubT: (
+        font-weight: 600,
+        font-size: 26px,
+        line-height: 100%,
+        letter-spacing: -0.8%
+    ),
+    B1: (
+        font-weight: 400,
+        font-size: 18px,
+        line-height: 32px,
+        letter-spacing: 0.08%
+    ),
+    B2: (
+        font-weight: 500,
+        font-size: 18px,
+        line-height: 24px,
+        letter-spacing: 0%
+    ),
+    B3: (
+        font-weight: 500,
+        font-size: 16px,
+        line-height: 22px,
+        letter-spacing: 0%
+    ),
+    B4: (
+        font-weight: 400,
+        font-size: 16px,
+        line-height: 100%,
+        letter-spacing: 0%
+    ),
+    Btn-text-1: (
+        font-weight: 600,
+        font-size: 16px,
+        line-height: 100%,
+        letter-spacing: 0%
+    ),
+    Btn-text-2: (
+        font-weight: 500,
+        font-size: 16px,
+        line-height: 100%,
+        letter-spacing: 0%
+    ),
+    Btn-text-3: (
+        font-weight: 600,
+        font-size: 14px,
+        line-height: 100%,
+        letter-spacing: 0%
+    ),
+    Btn-text-4: (
+        font-weight: 500,
+        font-size: 14px,
+        line-height: 100%,
+        letter-spacing: 0%
+    ),
+    Card-title: (
+        font-weight: 500,
+        font-size: 22px,
+        line-height: 100%,
+        letter-spacing: -1%
+    ),
+    Card-Body: (
+        font-weight: 400,
+        font-size: 16px,
+        line-height: 24px,
+        letter-spacing: 0.08%
+    ),
+    Main-title: (
+        font-weight: 600,
+        font-size: 80px,
+        line-height: 100%,
+        letter-spacing: -1.6%
+    ),
+    Main-body: (
+        font-weight: 500,
+        font-size: 24px,
+        line-height: 32px,
+        letter-spacing: -0.6%
+    ),
+    Main-Btn-1: (
+        font-weight: 600,
+        font-size: 20px,
+        line-height: 100%,
+        letter-spacing: 0%
+    ),
+    Main-Btn-2: (
+        font-weight: 500,
+        font-size: 20px,
+        line-height: 100%,
+        letter-spacing: 0%
+    )
+);

@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use './variables' as *;
+@use '../base/typography' as *;
 
 // 컬러 스타일
 @mixin color($theme, $color) {

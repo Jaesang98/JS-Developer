@@ -1,7 +1,13 @@
 @use 'sass:map';
 @use './variables' as *;
+@use '../base/typography' as *;
 
-//컬러 가져오기
+// 컬러 함수
 @function color($theme, $color) {
     @return map.get(map.get($colors, $theme), $color);
+}
+
+// 폰트 함수
+@function font($key, $prop) {
+    @return map.get(map.get($fonts, $key), $prop);
 }

@@ -2,6 +2,8 @@
 @use './abstracts/mixins' as *;
 @use './abstracts/function' as *;
 
+@use './base/typography' as *;
+
 @use './pages/home';
 
 @use './layout/footer';
