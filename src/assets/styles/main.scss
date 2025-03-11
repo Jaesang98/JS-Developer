@@ -18,4 +18,10 @@
     color: color(main, primary);
     background-color: color(light, 600);
     border: 1px solid color(light, btn);
+
+    //다크모드
+    @at-root .dark-theme & {
+        background-color: color(dark, header-bg);
+        color: color(dark, header-text);
+    }
 }
