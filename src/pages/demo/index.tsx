@@ -69,6 +69,7 @@ function Home() {
             </button>
             <h2>다국어 처리 (선택된 다국어: {i18n.language})</h2>
             <h3>{t('Test')} </h3>
+            {data}
         </>
     );
 }
