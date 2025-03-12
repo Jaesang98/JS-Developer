@@ -5,44 +5,56 @@
 /* 공통 사용 */
 .btn1 {
     @include font-style(Btn-text-3);
-    @include color(main, white);
-    @include bg-color(main, primary2);
+    background-color: color(main, primary2);
+    color: color(main, white);
     padding: 9.5px 16px;
     border-radius: 6px;
     border-width: 1px;
-    border: 1px solid #{color(main, primary)};
+    border: 1px solid color(main, primary);
     cursor: pointer;
-
-    &:hover {
-        @include bg-color(main, primary);
-    }
 }
 
 .btn2 {
     @include font-style(Main-Btn-1);
-    @include color(dark, 100);
-    @include bg-color(main, primary);
+    background-color: color(main, primary);
+    color: color(dark, 100);
     padding: 20px 105px;
     border-radius: 12px;
     border: none;
     cursor: pointer;
-    box-shadow: 0px 2px 4px 0px #{color(light, 100)};
+    box-shadow: 0px 2px 4px 0px color(light, 100);
+
+    @at-root .dark-theme & {
+        background-color: color(main, primary2);
+        box-shadow: 0px 2px 4px 0px color(dark, 900);
+    }
 
     &:hover {
-        @include bg-color(main, primary2);
+        background-color: color(main, primary2);
+        border: 1px solid #ffffff66;
+        box-shadow: 0px 0px 12px 0px #00b07599;
+        transition: color 0.1s ease-in-out;
     }
 }
 
 .btn3 {
     @include font-style(Main-Btn-2);
-    @include color(light, black);
-    @include bg-color(main, white);
+    background-color: color(main, white);
+    color: color(light, black);
     padding: 19.5px 70px 20.5px 26px;
     border-radius: 12px;
     border: 2px solid color(light, 300);
     cursor: pointer;
     position: relative;
+    box-shadow: 0px 2px 4px 0px color(light, 100);
 
     background-image: url('../img/btnArrow.svg');
     background-position: right 24px center;
+
+    @at-root .dark-theme & {
+        background-color: color(dark, 800);
+        color: color(dark, 100);
+        border: 2px solid color(dark, 600);
+        box-shadow: 0px 2px 4px 0px color(dark, 900);
+    }
 }

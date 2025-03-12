@@ -15,14 +15,22 @@
 
 .home-title {
     @include font-style(Main-title);
-    @include color(light, black);
+    color: color(light, black);
+
+    @at-root .dark-theme & {
+        color: color(dark, 100);
+    }
 }
 
 .home-subtitle {
     @include font-style(Main-body);
-    @include color(light, 800);
-    width: 731px;
+    color: color(light, 800);
+    max-width: 750px;
     text-align: center;
+
+    @at-root .dark-theme & {
+        color: color(dark, 400);
+    }
 }
 
 .home-hr {
@@ -31,6 +39,10 @@
     border-top: 1px solid transparent; // 상단 테두리 적용
     border-image-source: linear-gradient(90deg, rgba(206, 207, 223, 0) 0%, #cecfdf 50%, rgba(206, 207, 223, 0) 100%);
     border-image-slice: 1;
+
+    @at-root .dark-theme & {
+        border-image-source: linear-gradient(90deg, rgba(32, 34, 41, 0) 0%, #202229 50%, rgba(32, 34, 41, 0) 100%);
+    }
 }
 
 .home-btnWrap {

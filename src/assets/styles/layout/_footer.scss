@@ -4,19 +4,33 @@
 
 /*푸터*/
 .footer {
-    @include bg-color(light, 200);
+    background-color: color(light, 200);
+    border-top: 1px solid color(light, 400);
     padding: 64px 252px 74px 252px;
     display: flex;
     flex-direction: column;
     gap: 24px;
+
+    @at-root .dark-theme & {
+        background-color: color(dark, 700);
+        border-top: 1px solid color(dark, 600);
+    }
 }
 
 .footer-title {
     @include font-style(Main-body);
-    @include color(light, 900);
+    color: color(light, 900);
+
+    @at-root .dark-theme & {
+        color: color(dark, 200);
+    }
 }
 
 .footer-item {
     @include font-style(B4);
-    @include color(light, 800);
+    color: color(light, 800);
+
+    @at-root .dark-theme & {
+        color: color(dark, 300);
+    }
 }
