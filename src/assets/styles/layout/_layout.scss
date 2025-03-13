@@ -7,7 +7,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    background-color: color(light, white);
+    background-color: color(light, 100);
     min-height: 100vh;
 
     @at-root .dark-theme & {

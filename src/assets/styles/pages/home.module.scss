@@ -11,9 +11,11 @@
     height: 100%;
     background-image: url('../../img/lightbg.png');
     background-position: top 0px right 0px;
+    background-color: color(main, white);
 
     :global(.dark-theme) & {
         background-image: url('../../img/darkbg.png');
+        background-color: color(dark, 900);
     }
 }
 
