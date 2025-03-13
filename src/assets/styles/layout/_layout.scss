@@ -5,18 +5,18 @@
 
 /*레이아웃*/
 .container {
+    display: flex;
+    flex-direction: column;
     background-color: color(light, white);
-    height: 100svh;
-    background-image: url('../img/lightbg.png');
-    background-position: top 0px right 0px;
+    min-height: 100vh;
 
     @at-root .dark-theme & {
         background-color: color(dark, 900);
-        background-image: url('../img/darkbg.png');
     }
 }
 
 .contentWrap {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
