@@ -1,5 +1,5 @@
 import MainLayout from '@/components/MainLayout';
-import '@/assets/styles/pages/_home.scss';
+import '@/assets/styles/pages/home.module.scss';
 
 function Home() {
     return (
