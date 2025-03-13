@@ -12,7 +12,7 @@
     background-image: url('../../img/lightbg.png');
     background-position: top 0px right 0px;
 
-    @at-root .dark-theme & {
+    :global(.dark-theme) & {
         background-image: url('../../img/darkbg.png');
     }
 }
@@ -31,7 +31,7 @@
     @include font-style(Main-title);
     color: color(light, black);
 
-    @at-root .dark-theme & {
+    :global(.dark-theme) & {
         color: color(dark, 100);
     }
 }
@@ -42,7 +42,7 @@
     max-width: 750px;
     text-align: center;
 
-    @at-root .dark-theme & {
+    :global(.dark-theme) & {
         color: color(dark, 400);
     }
 }
@@ -54,7 +54,7 @@
     border-image-source: linear-gradient(90deg, rgba(206, 207, 223, 0) 0%, #cecfdf 50%, rgba(206, 207, 223, 0) 100%);
     border-image-slice: 1;
 
-    @at-root .dark-theme & {
+    :global(.dark-theme) & {
         border-image-source: linear-gradient(90deg, rgba(32, 34, 41, 0) 0%, #202229 50%, rgba(32, 34, 41, 0) 100%);
     }
 }
