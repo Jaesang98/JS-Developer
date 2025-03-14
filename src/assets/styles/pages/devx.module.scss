@@ -33,8 +33,20 @@
     }
 }
 
+.devx-filter {
+    display: flex;
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.devx-searchWrap {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+}
+
 .devx-filterWrap {
     width: 100%;
-    margin-top: 40px;
     display: flex;
+    justify-content: space-between;
 }
