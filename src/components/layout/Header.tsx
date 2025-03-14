@@ -21,7 +21,13 @@ function Header() {
 
     return (
         <div className={styles['header']}>
-            <div className={styles['header-logo']}>JS-Developer</div>
+            <div
+                className={styles['header-logo']}
+                onClick={() => {
+                    navigate('/');
+                }}>
+                JS-Developer
+            </div>
 
             <div className={styles['header-list']}>
                 <div className={styles['header-item']}>개발 가이드</div>

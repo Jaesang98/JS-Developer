@@ -21,6 +21,7 @@
 .header-logo {
     @include font-style(Main-body);
     color: color(main, white);
+    cursor: pointer;
 }
 
 .header-list {
