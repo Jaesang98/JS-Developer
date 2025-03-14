@@ -1,6 +1,7 @@
-import MainLayout from '@/components/MainLayout';
 import styles from '@/assets/styles/pages/home.module.scss';
 import { useNavigate } from 'react-router-dom';
+import MainLayout from '@/components/layout/MainLayout';
+import Button from '@/components/ui/button';
 
 function Home() {
     const navigate = useNavigate();
@@ -14,15 +15,11 @@ function Home() {
                     </div>
                     <div className={styles['home-hr']}></div>
                     <div className={styles['home-btnWrap']}>
-                        <button className="btn2">시작하기</button>
-                        <button className="btn3">개발 가이드</button>
-                        <button
-                            className="btn3"
-                            onClick={() => {
-                                navigate('/Devx');
-                            }}>
+                        <Button variant="btn2">시작하기</Button>
+                        <Button variant="btn3">개발 가이드</Button>
+                        <Button variant="btn3" onClick={() => navigate('/Devx')}>
                             개발 사전
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>

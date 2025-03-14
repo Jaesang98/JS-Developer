@@ -12,7 +12,7 @@
     align-items: center;
     padding: 16px 252px;
 
-    @at-root .dark-theme & {
+    :global(.dark-theme) & {
         background-color: color(dark, header-bg);
         color: color(dark, header-text);
     }
@@ -29,7 +29,7 @@
     display: flex;
     gap: 40px;
 
-    @at-root .dark-theme & {
+    :global(.dark-theme) & {
         color: color(dark, 100);
     }
 }
@@ -65,7 +65,7 @@
     background-position: center;
     cursor: pointer;
 
-    @at-root .dark-theme & {
+    :global(.dark-theme) & {
         background-image: url('/src/assets/img/lightmode.svg');
     }
 }

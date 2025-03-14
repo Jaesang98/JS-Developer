@@ -4,12 +4,6 @@
 
 @use './base/typography' as *;
 
-@use './layout/footer';
-@use './layout/header';
-@use './layout/layout';
-
-@use './components/button';
-
 //폰트, 컬러 사용 예시
 .test {
     @include font-style(Main-title);

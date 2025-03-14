@@ -10,7 +10,7 @@
     background-color: color(light, 100);
     min-height: 100vh;
 
-    @at-root .dark-theme & {
+    :global(.dark-theme) & {
         background-color: color(dark, 900);
     }
 }

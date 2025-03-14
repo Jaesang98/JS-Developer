@@ -18,9 +18,17 @@
     flex-direction: column;
     background-color: color(main, white);
     padding: 96px 104px 171px 104px;
+
+    :global(.dark-theme) & {
+        background-color: color(dark, 800);
+    }
 }
 
 .devx-title {
     @include font-style(T2);
     color: color(light, black);
+
+    :global(.dark-theme) & {
+        color: color(dark, 100);
+    }
 }

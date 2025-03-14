@@ -1,4 +1,4 @@
-import MainLayout from '@/components/MainLayout';
+import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/devx.module.scss';
 
 function Devx() {

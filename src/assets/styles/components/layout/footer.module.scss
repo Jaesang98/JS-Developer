@@ -11,7 +11,7 @@
     flex-direction: column;
     gap: 24px;
 
-    @at-root .dark-theme & {
+    :global(.dark-theme) & {
         background-color: color(dark, 700);
         border-top: 1px solid color(dark, 600);
     }
@@ -21,7 +21,7 @@
     @include font-style(Main-body);
     color: color(light, 900);
 
-    @at-root .dark-theme & {
+    :global(.dark-theme) & {
         color: color(dark, 200);
     }
 }
@@ -30,7 +30,7 @@
     @include font-style(B4);
     color: color(light, 800);
 
-    @at-root .dark-theme & {
+    :global(.dark-theme) & {
         color: color(dark, 300);
     }
 }
