@@ -1,9 +1,32 @@
+@use '/src/assets/styles/abstracts/mixins' as *;
+@use '/src/assets/styles/abstracts/variables' as *;
+@use '/src/assets/styles/abstracts/function' as *;
+
 .input1 {
-    width: 320;
+    @include font-style(Btn-text-2);
+    background-color: color(main, white);
+    border: 1px solid color(light, 500);
+    color: color(light, 700);
+    min-width: 320px;
     height: 48px;
     border-radius: 8px;
     border-width: 1px;
     padding-right: 20px;
     padding-left: 20px;
-    gap: 10px;
+
+    &:focus {
+        outline: none;
+        color: color(light, 900);
+    }
+
+    :global(.dark-theme) & {
+        background-color: color(dark, 800);
+        border: 1px solid color(dark, 500);
+        color: color(dark, 300);
+
+        &:focus {
+            outline: none;
+            color: color(dark, 200);
+        }
+    }
 }
