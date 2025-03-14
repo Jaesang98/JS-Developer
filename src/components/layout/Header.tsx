@@ -32,7 +32,7 @@ function Header() {
                     }}>
                     개발 사전
                 </div>
-                <div className={styles['header-item-disabled']}>마이페이지</div>
+                <div className={`${styles['header-item']} ${styles.disabled}`}>마이페이지</div>
             </div>
 
             <div className={styles['header-control']}>
