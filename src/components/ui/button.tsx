@@ -5,20 +5,17 @@ interface ButtonProps {
     variant?: 'btn1' | 'btn2' | 'btn3';
     children: React.ReactNode;
     onClick?: () => void;
-    className?: string;
     disabled?: boolean;
-    type?: 'button' | 'submit' | 'reset';
 }
 
 /**
- * Button component that supports three different styles:
- * - btn1: Small button with primary2 background
- * - btn2: Large primary button with hover effects and dark theme support
- * - btn3: Button with arrow icon and border
+ * - btn1: 로그인 버튼
+ * - btn2: 메인화면 시작하기 버튼
+ * - btn3: 메인화면 보러가기 버튼
  */
-const Button: React.FC<ButtonProps> = ({ variant = 'btn1', children, onClick, className = '', disabled = false, type = 'button' }) => {
+const Button: React.FC<ButtonProps> = ({ variant = 'btn1', children, onClick, disabled = false }) => {
     return (
-        <button type={type} className={`${styles[variant]} ${className}`} onClick={onClick} disabled={disabled}>
+        <button className={`${styles[variant]}`} onClick={onClick} disabled={disabled}>
             {children}
         </button>
     );
