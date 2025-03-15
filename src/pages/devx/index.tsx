@@ -2,6 +2,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/devx.module.scss';
 import Input from '@/components/ui/input';
 import Button from '@/components/ui/button';
+import Switch from '@/components/ui/switch';
 
 function Devx() {
     return (
@@ -15,8 +16,8 @@ function Devx() {
                             <Button variant="btn4">검색</Button>
                         </div>
                         <div className={styles['devx-filterWrap']}>
-                            aaa
-                            <Button variant="btn4">검색</Button>
+                            <Switch></Switch>
+                            <Button variant="btn5">단어 추가</Button>
                         </div>
                     </div>
                 </div>

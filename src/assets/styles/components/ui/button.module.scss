@@ -82,3 +82,28 @@
         }
     }
 }
+
+.btn5 {
+    @include font-style(Btn-text-1);
+    background-color: color(light, btn);
+    color: color(main, white);
+    padding: 14.5px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: color(light, btn-hover);
+        color: color(light, 600);
+    }
+
+    :global(.dark-theme) & {
+        background-color: color(dark, btn2);
+        color: color(dark, 100);
+
+        &:hover {
+            border: 1px solid color(dark, 300);
+            background-color: color(dark, btn-hover);
+        }
+    }
+}
