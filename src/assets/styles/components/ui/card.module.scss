@@ -1,0 +1,84 @@
+@use '/src/assets/styles/abstracts/mixins' as *;
+@use '/src/assets/styles/abstracts/variables' as *;
+@use '/src/assets/styles/abstracts/function' as *;
+
+.cardwrap {
+    background-color: color(main, white);
+    border: 2px solid color(light, 300);
+    padding: 28px 32px;
+    border-radius: 16px;
+    border-width: 2px;
+    cursor: pointer;
+    min-width: 420px;
+    min-height: 228px;
+    position: relative;
+
+    &:hover {
+        background-color: color(light, 100);
+        border: 2px solid color(light, 400);
+    }
+
+    :global(.dark-theme) & {
+        background-color: color(dark, 800);
+        border: 2px solid color(dark, 600);
+        box-shadow: 0px 2px 4px 0px color(dark, 900);
+
+        &:hover {
+            background-color: color(dark, 900);
+            border: 2px solid color(dark, 400);
+            box-shadow: 0px 2px 4px 0px color(dark, 900);
+        }
+    }
+}
+
+.card-title {
+    @include font-style(Card-title);
+    color: color(light, black);
+
+    :global(.dark-theme) & {
+        color: color(dark, 100);
+    }
+}
+
+.card-content {
+    @include font-style(Card-Body);
+    color: color(light, 800);
+    margin-top: 40px;
+    max-width: 350px;
+    max-height: 72px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    :global(.dark-theme) & {
+        color: color(dark, 300);
+    }
+}
+
+.card-info {
+    @include font-style(Btn-text-4);
+    color: color(light, 700);
+    display: flex;
+    gap: 12px;
+    padding-bottom: 1px;
+    position: absolute;
+    left: 32px;
+    bottom: 28px;
+
+    :global(.dark-theme) & {
+        color: color(dark, 300);
+    }
+}
+
+.card-name {
+    background-image: url('../../../img/icon-name.svg');
+    padding-left: 20px;
+}
+
+.card-date {
+    background-image: url('../../../img/icon-date.svg');
+    padding-left: 20px;
+}

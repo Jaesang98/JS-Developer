@@ -2,7 +2,6 @@
 @use '/src/assets/styles/abstracts/variables' as *;
 @use '/src/assets/styles/abstracts/function' as *;
 
-/* 공통 사용 */
 .btn1 {
     @include font-style(Btn-text-3);
     background-color: color(main, primary2);
