@@ -17,7 +17,7 @@ function Home() {
                     <div className={styles['home-btnWrap']}>
                         <Button variant={'btn2'} children={'시작하기'} onClick={() => navigate('/Guide')}></Button>
                         <Button variant={'btn3'} children={'개발 가이드'} onClick={() => navigate('/Guide')}></Button>
-                        <Button variant={'btn3'} children={'개발 사전전'} onClick={() => navigate('/Devx')}></Button>
+                        <Button variant={'btn3'} children={'개발 사전'} onClick={() => navigate('/Devx')}></Button>
                     </div>
                 </div>
             </div>
