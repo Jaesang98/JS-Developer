@@ -13,7 +13,7 @@
 
 .devx-content {
     width: 1056px;
-    height: 1440px;
+    min-height: 1440px;
     display: flex;
     flex-direction: column;
     background-color: color(main, white);

@@ -6,7 +6,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div className={styles['container']}>
             <Header />
-            <div className={styles['content-wrap']}>{children}</div>
+            <div className={styles['contentWrap']}>{children}</div>
             <Footer />
         </div>
     );
