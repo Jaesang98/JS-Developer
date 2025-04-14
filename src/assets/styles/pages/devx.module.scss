@@ -124,3 +124,43 @@
         background-color: color(dark, 900);
     }
 }
+
+/* 개발자 사전 수정 */
+.devxedit-titleBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.devxedit-search {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.devxedit-title {
+    @include font-style(SubT);
+    color: color(light, black);
+
+    :global(.dark-theme) & {
+        color: color(dark, 100);
+    }
+}
+
+.devxedit-success {
+    @include font-style(Btn-text-2);
+    color: color(main, primary);
+}
+
+.devxedit-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 64px;
+}
+
+.devxedit-description {
+    margin-top: 64px;
+}

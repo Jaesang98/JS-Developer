@@ -2,6 +2,7 @@
 @use './abstracts/mixins' as *;
 @use './abstracts/function' as *;
 @use './base/typography' as *;
+@use './base/util' as *;
 
 //폰트, 컬러 사용 예시
 .test {

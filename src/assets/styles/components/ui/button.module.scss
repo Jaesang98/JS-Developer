@@ -111,14 +111,52 @@
     @include font-style(Btn-text-1);
     color: color(main, primary);
     border: 1px solid color(main, primary);
-    min-width: 280px;
-    min-height: 48px;
-    padding: 14.5px 112px;
+    width: 290px;
+    height: 48px;
+    // padding: 14.5px 112px;
     border-radius: 8px;
     cursor: pointer;
 
     &:hover {
         background-color: color(main, primary);
         color: color(main, white);
+    }
+}
+
+.btn7 {
+    @include font-style(Btn-text-2);
+    color: color(main, primary2);
+    border: 1px solid color(main, primary);
+    width: 290px;
+    height: 48px;
+    // padding: 14.5px 112px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: color(main, primary3);
+        color: color(main, primary2);
+    }
+
+    &:disabled {
+        background-color: color(light, 200);
+        color: color(light, 600);
+        border: 1px solid color(light, 500);
+    }
+
+    :global(.dark-theme) & {
+        background-color: color(dark, btn2);
+        color: color(main, primary2);
+
+        &:hover {
+            background-color: #00b0751f;
+            color: color(main, primary2);
+        }
+
+        &:disabled {
+            background-color: color(dark, 700);
+            color: color(dark, 400);
+            border: 1px solid color(dark, 600);
+        }
     }
 }
