@@ -30,7 +30,9 @@ function Header() {
             </div>
 
             <div className={styles['header-list']}>
-                <div className={styles['header-item']}>개발 가이드</div>
+                <div className={styles['header-item']} onClick={() => navigate('/Guide')}>
+                    개발 가이드
+                </div>
                 <div
                     className={styles['header-item']}
                     onClick={() => {
@@ -43,7 +45,7 @@ function Header() {
 
             <div className={styles['header-control']}>
                 <div className={styles['header-switch']} onClick={toggleDarkMode}></div>
-                <Button variant="btn1">로그인</Button>
+                <Button variant={'btn1'} children={'로그인'}></Button>
             </div>
         </div>
     );

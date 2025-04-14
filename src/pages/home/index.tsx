@@ -15,11 +15,9 @@ function Home() {
                     </div>
                     <div className={styles['home-hr']}></div>
                     <div className={styles['home-btnWrap']}>
-                        <Button variant="btn2">시작하기</Button>
-                        <Button variant="btn3">개발 가이드</Button>
-                        <Button variant="btn3" onClick={() => navigate('/Devx')}>
-                            개발 사전
-                        </Button>
+                        <Button variant={'btn2'} children={'시작하기'} onClick={() => navigate('/Guide')}></Button>
+                        <Button variant={'btn3'} children={'개발 가이드'} onClick={() => navigate('/Guide')}></Button>
+                        <Button variant={'btn3'} children={'개발 사전전'} onClick={() => navigate('/Devx')}></Button>
                     </div>
                 </div>
             </div>
