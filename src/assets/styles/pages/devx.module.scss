@@ -57,3 +57,70 @@
     gap: 8px;
     margin-top: 28px;
 }
+
+/* 개발자 사전 상세  */
+.devxdetail-content {
+    width: 1024px;
+    min-height: 1016px;
+    display: flex;
+    flex-direction: column;
+    background-color: color(main, white);
+    padding: 96px 104px 171px 104px;
+
+    :global(.dark-theme) & {
+        background-color: color(dark, 800);
+    }
+}
+
+.devxdetail-titleBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+.devxdetail-title {
+    @include font-style(T1);
+    color: color(light, black);
+
+    :global(.dark-theme) & {
+        color: color(dark, 100);
+    }
+}
+
+.devxdetail-block {
+    display: flex;
+    gap: 8px;
+}
+
+.devxdetail-info {
+    @include font-style(Btn-text-4);
+    color: color(light, 900);
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    :global(.dark-theme) & {
+        color: color(dark, 200);
+    }
+}
+
+.devxdetail-name {
+    background-image: url('../../img/icon-name.svg');
+    padding-left: 20px;
+}
+
+.devxdetail-date {
+    background-image: url('../../img/icon-date.svg');
+    padding-left: 20px;
+}
+
+.devxdetail-code {
+    background-color: color(light, 100);
+    margin-top: 40px;
+    width: 848px;
+    height: 320px;
+
+    :global(.dark-theme) & {
+        background-color: color(dark, 900);
+    }
+}
