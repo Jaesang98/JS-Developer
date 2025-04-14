@@ -17,7 +17,7 @@ function Devx() {
                             <Button variant="btn4">검색</Button>
                         </div>
                         <div className={styles['devx-filterWrap']}>
-                            <Switch></Switch>
+                            <Switch onChange={value => console.log('선택된 값:', value)} />
                             <Button variant="btn5">단어 추가</Button>
                         </div>
                     </div>
