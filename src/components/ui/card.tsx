@@ -16,7 +16,7 @@ interface CardProps {
  * - btn4: 개발자 사전 검색 버튼
  * - btn5: 개발자 사전 단어 추가 버튼
  */
-const Card: React.FC<CardProps> = ({ title, content, name, date, ...props }) => {
+const Card: React.FC<CardProps> = ({ title, content, name, date }) => {
     return (
         <div className={styles['cardwrap']}>
             <div className={styles['card-title']}>{title}</div>
