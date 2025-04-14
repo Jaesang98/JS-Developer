@@ -12,9 +12,9 @@ interface SwitchProps {
  */
 const Switch = () => {
     return (
-        <div className={styles['switch1-wrap']}>
+        <div className={styles['switch1']}>
             <div className={styles['switch1-item']}>최신순</div>
-            <div className={styles['switch1-item2']}>가나다순</div>
+            <div className={styles['switch1-item']}>가나다순</div>
         </div>
     );
 };

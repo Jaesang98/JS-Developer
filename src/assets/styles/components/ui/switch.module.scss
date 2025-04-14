@@ -2,7 +2,7 @@
 @use '/src/assets/styles/abstracts/variables' as *;
 @use '/src/assets/styles/abstracts/function' as *;
 
-.switch1-wrap {
+.switch1 {
     @include font-style(Btn-text-4);
     background-color: color(light, 100);
     display: flex;
@@ -17,6 +17,18 @@
 }
 
 .switch1-item {
+    color: color(light, 700);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 4px;
+
+    :global(.dark-theme) & {
+        color: color(dark, 300);
+    }
+}
+
+.switch1-wrap {
     min-width: 61px;
     background-color: color(main, white);
     color: color(light, 900);
@@ -31,17 +43,5 @@
         background-color: color(dark, 800);
         color: color(dark, 200);
         border: 1px solid color(dark, 600);
-    }
-}
-
-.switch1-item2 {
-    color: color(light, 700);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 4px;
-
-    :global(.dark-theme) & {
-        color: color(dark, 300);
     }
 }
