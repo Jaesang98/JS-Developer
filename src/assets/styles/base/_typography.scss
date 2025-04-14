@@ -122,3 +122,21 @@ $fonts: (
         letter-spacing: 0%
     )
 );
+
+/* 기본 태그들 스타일링 */
+hr {
+    width: 100%;
+    border: 1px solid #e7e7ee;
+
+    :global(.dark-theme) & {
+        border: 1px solid #202228;
+    }
+}
+
+.divider-28 {
+    margin: 28px 0 28px 0;
+}
+
+.divider-56 {
+    margin: 56px 0 56px 0;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '@/assets/styles/components/ui/button.module.scss';
 
 interface ButtonProps {
-    variant?: 'btn1' | 'btn2' | 'btn3' | 'btn4' | 'btn5';
+    variant?: 'btn1' | 'btn2' | 'btn3' | 'btn4' | 'btn5' | 'btn6';
     children: React.ReactNode;
     onClick?: () => void;
     disabled?: boolean;

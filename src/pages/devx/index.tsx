@@ -13,7 +13,7 @@ function Devx() {
                     <div className={styles['devx-title']}>개발자 사전</div>
                     <div className={styles['devx-filter']}>
                         <div className={styles['devx-searchWrap']}>
-                            <Input variant="input1" children={undefined}></Input>
+                            <Input variant="input1"></Input>
                             <Button variant="btn4">검색</Button>
                         </div>
                         <div className={styles['devx-filterWrap']}>

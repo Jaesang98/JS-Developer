@@ -4,10 +4,8 @@
 
 .input1 {
     @include font-style(Btn-text-2);
-    background-color: color(main, white);
     border: 1px solid color(light, 500);
     color: color(light, 700);
-    min-width: 320px;
     height: 48px;
     border-radius: 8px;
     border-width: 1px;

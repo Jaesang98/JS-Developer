@@ -106,3 +106,19 @@
         }
     }
 }
+
+.btn6 {
+    @include font-style(Btn-text-1);
+    color: color(main, primary);
+    border: 1px solid color(main, primary);
+    min-width: 280px;
+    min-height: 48px;
+    padding: 14.5px 112px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: color(main, primary);
+        color: color(main, white);
+    }
+}

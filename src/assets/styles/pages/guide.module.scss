@@ -1,0 +1,252 @@
+@use '/src/assets/styles/abstracts/mixins' as *;
+@use '/src/assets/styles/abstracts/variables' as *;
+@use '/src/assets/styles/abstracts/function' as *;
+
+/* 가이드 */
+.guide-contentWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.guide-block {
+    width: 1520px;
+    min-height: 1440px;
+    display: flex;
+}
+
+// 왼쪽 사이드바바
+.guide-leftside {
+    min-width: 360px;
+    padding: 28px 24px;
+}
+
+.guide-meun {
+    margin-top: 32px;
+}
+
+.guide-meunlist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.guide-meunItem {
+    @include font-style(B2);
+    color: color(light, black);
+    padding: 12px 32px 12px 8px;
+    cursor: pointer;
+
+    background-image: url('../../img/icon-up.svg');
+    background-position: right center;
+
+    :global(.dark-theme) & {
+        color: color(dark, 100);
+    }
+
+    &.active {
+        background-image: url('../../img/icon-down.svg');
+    }
+}
+
+.guide-submenuList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.guide-submenuItem {
+    @include font-style(B3);
+    color: color(light, 700);
+    padding: 10px 16px 12px 16px;
+    display: flex;
+
+    &:hover {
+        color: color(main, primary);
+    }
+
+    &.active {
+        color: color(light, black);
+        background-color: color(light, 200);
+        border-radius: 8px;
+
+        :global(.dark-theme) & {
+            color: color(dark, 100);
+            background-color: color(dark, 700);
+        }
+    }
+}
+
+// 센터
+.guide-center {
+    min-width: 840px;
+    background-color: color(main, white);
+    padding: 96px 104px;
+
+    :global(.dark-theme) & {
+        background-color: color(dark, 800);
+    }
+}
+
+.guide-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.guide-title {
+    @include font-style(T1);
+    color: color(light, black);
+    margin-bottom: 40px;
+
+    :global(.dark-theme) & {
+        color: color(dark, 100);
+    }
+}
+
+.guide-descBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.guide-subTitle {
+    @include font-style(T2);
+    color: color(light, black);
+
+    :global(.dark-theme) & {
+        color: color(dark, 100);
+    }
+}
+
+.guide-description {
+    @include font-style(B1);
+    color: color(light, 900);
+
+    :global(.dark-theme) & {
+        color: color(dark, 200);
+    }
+}
+
+.guide-img {
+    width: 640px;
+    height: 320px;
+    border-radius: 8px;
+    background-color: color(light, 100);
+
+    :global(.dark-theme) & {
+        background-color: color(dark, 600);
+    }
+}
+
+.guide-tab {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.guide-tablist {
+    display: flex;
+    width: 100%;
+}
+
+.guide-tabitem {
+    @include font-style(Btn-text-2);
+    color: color(light, 600);
+    display: flex;
+    padding: 18.5px 29px;
+    border-bottom: 2px solid color(light, 200);
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    :global(.dark-theme) & {
+        color: color(dark, 400);
+        border-bottom: 2px solid color(dark, 700);
+    }
+
+    &.active {
+        color: color(light, 900);
+        border-bottom: 2px solid color(main, primary);
+
+        :global(.dark-theme) & {
+            color: color(dark, 200);
+        }
+    }
+}
+
+.guide-codeBlock {
+    width: 640px;
+    height: 320px;
+}
+
+.guide-btnblock {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+// 오른쪽 사이드바
+.guide-rightside {
+    min-width: 320px;
+    background-color: color(main, white);
+    padding: 92px 20px;
+
+    :global(.dark-theme) & {
+        background-color: color(dark, 800);
+    }
+}
+
+.guide-ctg {
+    position: sticky;
+    top: 100px;
+    z-index: 10;
+}
+
+.guide-ctgtitle {
+    @include font-style(B3);
+    color: color(light, black);
+    background-image: url('../../img/category.svg');
+    background-position: 16px center; // 왼쪽 16px, 세로 중앙
+    padding: 8px 36px;
+    display: flex;
+    align-items: center;
+
+    :global(.dark-theme) & {
+        color: color(dark, 100);
+    }
+}
+
+.guide-ctglist {
+    cursor: pointer;
+}
+
+.guide-ctgitem {
+    @include font-style(B3);
+    color: color(light, 600);
+    padding: 8px 64px 8px 36px;
+
+    &:hover {
+        color: color(main, primary);
+    }
+
+    &.active {
+        color: color(main, primary);
+    }
+
+    :global(.dark-theme) & {
+        color: color(dark, 400);
+
+        &:hover {
+            color: color(main, primary);
+        }
+
+        &.active {
+            color: color(main, primary);
+        }
+    }
+}
