@@ -10,14 +10,12 @@ const Switch = ({ onChange }: SwitchProps) => {
 
     const toggle = (index: number) => {
         setActive(index);
-        if (onChange) {
-            onChange(index);
-        }
+        onChange(index);
     };
 
     return (
         <div className={styles.switch1}>
-            <div className={styles['switch1-slider']} style={{ transform: `translateX(${active * 100}%)` }}></div>
+            <div className={`${styles['switch1-slider']} ${styles[`active-${active}`]}`}></div>
 
             <div className={`${styles['switch1-item']} ${active === 0 ? styles['switch1-item-active'] : ''}`} onClick={() => toggle(0)}>
                 최신순
