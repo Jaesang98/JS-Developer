@@ -1,0 +1,38 @@
+@use '/src/assets/styles/abstracts/mixins' as *;
+@use '/src/assets/styles/abstracts/variables' as *;
+@use '/src/assets/styles/abstracts/function' as *;
+
+.radioWrap {
+    @include font-style(B2);
+    color: color(light, 900);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    :global(.dark-theme) & {
+        color: color(dark, 200);
+    }
+}
+
+.radio {
+    display: none;
+}
+
+.radioIcon {
+    width: 22px;
+    height: 22px;
+    background-image: url('../../../img/icon-lightUncheck.svg');
+
+    :global(.dark-theme) & {
+        background-image: url('../../../img/icon-darkUncheck.svg');
+    }
+}
+
+.radio:checked + .radioIcon {
+    background-image: url('../../../img/icon-lightCheck.svg');
+
+    :global(.dark-theme) & {
+        background-image: url('../../../img/icon-darkcheck.svg');
+    }
+}

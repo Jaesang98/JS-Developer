@@ -1,69 +1,34 @@
-import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/guide.module.scss';
 import Button from '@/components/ui/button';
-import Input from '@/components/ui/input';
 import SelectBox from '@/components/ui/select';
-import CheckBox from '@/components/ui/checkbox';
 
-function GuideWrite01() {
+function AddCode() {
     const testOption = [
-        { id: 1, name: '대표메뉴1' },
-        { id: 1, name: '대표메뉴2' },
-        { id: 1, name: '대표메뉴3' }
+        { id: 1, name: '이미지' },
+        { id: 1, name: 'GIF' },
+        { id: 1, name: 'IFrame' }
     ];
     return (
-        <MainLayout>
-            <div className={styles['guide-contentWrap']}>
-                <div className={styles['meun-content']}>
-                    <div className={`${styles['meun-title']} required`}>1. 메뉴작성</div>
+        <div className={styles['image-contentWrap']}>
+            <div className={`${styles['meun-title']} required`}>3. 코드</div>
+            <div className={styles[`code-selectbox`]}>
+                <SelectBox option={testOption} defalut={'프레임워크 선택'}></SelectBox>
+            </div>
 
-                    <div className={styles['menu-block']}>
-                        <div className={styles['meun-subTitle']}>대표메뉴</div>
-                        <div className={styles['meun-write']}>
-                            <div className={styles['meun-selector']}>
-                                <SelectBox option={testOption} defalut={'대표메뉴 선택'}></SelectBox>
-                                <Input placeholder={'새로운 대표메뉴 이름'} disabled={true}></Input>
-                            </div>
-                            <div className={styles['meun-check']}>
-                                <CheckBox label={'새로 작성'}></CheckBox>
-                            </div>
-                        </div>
-                    </div>
+            <div className={styles['code-content']}>
+                <img src="https://picsum.photos/200/300" className={`${styles['image-preview']} ${styles['testimg']}`} />
+            </div>
 
-                    <div className={styles['menu-block']}>
-                        <div className={styles['meun-subTitle']}>소메뉴</div>
-                        <div className={styles['meun-write']}>
-                            <div className={styles['meun-selector']}>
-                                <SelectBox option={testOption} defalut={'대표메뉴 선택'}></SelectBox>
-                                <Input placeholder={'새로운 대표메뉴 이름'} disabled={true}></Input>
-                            </div>
-                            <div className={styles['meun-check']}>
-                                <CheckBox label={'새로 작성'}></CheckBox>
-                            </div>
-                        </div>
-                    </div>
+            <div className={styles['code-bottom']}>
+                <div className={styles['code-checkText']}>내용이 저장되었습니다.</div>
 
-                    <div className={styles['menu-block']}>
-                        <div className={styles['meun-subTitle']}>카테고리 메뉴</div>
-                        <div className={styles['meun-write']}>
-                            <div className={styles['meun-selector']}>
-                                <SelectBox option={testOption} defalut={'소메뉴 선택'}></SelectBox>
-                                <Input placeholder={'새로운 대표메뉴 이름'} disabled={true}></Input>
-                            </div>
-                            <div className={styles['meun-check']}>
-                                <CheckBox label={'새로 작성'}></CheckBox>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={styles['meun-btnBlock']}>
-                        <Button variant="btn4" children={'취소'} width={136}></Button>
-                        <Button variant="btn5" children={'다음'} width={136}></Button>
-                    </div>
+                <div className={styles['code-btnBlock']}>
+                    <Button variant="btn4" children={'내용 지우기'}></Button>
+                    <Button variant="btn5" children={'저장'} width={124}></Button>
                 </div>
             </div>
-        </MainLayout>
+        </div>
     );
 }
 
-export default GuideMenu;
+export default AddCode;
