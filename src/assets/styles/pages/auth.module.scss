@@ -1,0 +1,93 @@
+@use '/src/assets/styles/abstracts/mixins' as *;
+@use '/src/assets/styles/abstracts/variables' as *;
+@use '/src/assets/styles/abstracts/function' as *;
+
+.login-contentWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login-block {
+    width: 1200px;
+    min-height: 1016px;
+    padding: 104px 440px;
+}
+
+.login-title {
+    @include font-style(T2);
+    color: color(light, black);
+    margin-bottom: 40px;
+
+    :global(.dark-theme) & {
+        color: color(dark, 100);
+    }
+}
+
+.login-input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.login-check {
+    margin-bottom: 40px;
+}
+
+.login-btn {
+    margin-bottom: 32px;
+
+    button {
+        height: 52px;
+    }
+}
+
+.login-help {
+    display: flex;
+    gap: 24px;
+    padding-left: 10.5px;
+    padding-right: 10.5px;
+    margin-bottom: 64px;
+}
+
+.login-helpItem {
+    @include font-style(B4);
+    color: color(light, 900);
+
+    :global(.dark-theme) & {
+        color: color(dark, 200);
+    }
+}
+
+.login-authList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.login-google,
+.login-kakao,
+.login-naver {
+    width: 320px;
+    height: 52px;
+    cursor: pointer;
+}
+
+.login-google {
+    background-image: url('../../img/google.png');
+
+    :global(.dark-theme) & {
+        background-image: url('../../img/google-dark.png');
+    }
+}
+
+.login-kakao {
+    background-image: url('../../img/kakao.png');
+}
+
+.login-naver {
+    background-image: url('../../img/naver.png');
+}
