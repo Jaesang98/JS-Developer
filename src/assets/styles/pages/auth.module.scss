@@ -93,21 +93,24 @@
 }
 
 /* 회원가입 */
-.register-description {
-    @include font-style(T2);
-    color: color(light, black);
-    margin-bottom: 24px;
-
-    :global(.dark-theme) & {
-        color: color(dark, 100);
-    }
-}
-
-.register-description {
+.register-description,
+.edit-description {
     @include font-style(B3);
     color: color(light, 900);
 
     :global(.dark-theme) & {
         color: color(dark, 200);
     }
+}
+
+/* 비밀번호 변경 */
+.register-description {
+    margin-bottom: 24px;
+}
+
+.register-input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
 }
