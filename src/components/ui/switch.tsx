@@ -17,11 +17,11 @@ const Switch = ({ onChange }: SwitchProps) => {
         <div className={styles.switch1}>
             <div className={`${styles['switch1-slider']} ${styles[`active-${active}`]}`}></div>
 
-            <div className={`${styles['switch1-item']} ${active === 0 ? styles['switch1-item-active'] : ''}`} onClick={() => toggle(0)}>
+            <div className={`${styles['switch1-item']} ${active === 0 ? styles['switch1-item-active'] : 'switch1-item'}`} onClick={() => toggle(0)}>
                 최신순
             </div>
 
-            <div className={`${styles['switch1-item']} ${active === 1 ? styles['switch1-item-active'] : ''}`} onClick={() => toggle(1)}>
+            <div className={`${styles['switch1-item']} ${active === 1 ? styles['switch1-item-active'] : 'switch1-item'}`} onClick={() => toggle(1)}>
                 인기순
             </div>
         </div>
