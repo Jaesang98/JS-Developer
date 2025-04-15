@@ -22,7 +22,7 @@ const Switch = ({ onChange }: SwitchProps) => {
             </div>
 
             <div className={`${styles['switch1-item']} ${active === 1 ? styles['switch1-item-active'] : 'switch1-item'}`} onClick={() => toggle(1)}>
-                인기순
+                가나다순
             </div>
         </div>
     );

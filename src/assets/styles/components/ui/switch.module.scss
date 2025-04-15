@@ -9,6 +9,8 @@
     gap: 4px;
     border-radius: 10px;
     padding: 4px;
+    min-width: 146px;
+    min-height: 41px;
     cursor: pointer;
     background-color: color(light, 100);
     overflow: hidden;
@@ -58,6 +60,7 @@
     justify-content: center;
     align-items: center;
     padding: 8px 4px;
+    white-space: nowrap;
     @include font-style(Btn-text-4);
 
     :global(.dark-theme) & {
