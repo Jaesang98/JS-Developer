@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '@/assets/styles/components/ui/button.module.scss';
 
 interface ButtonProps {

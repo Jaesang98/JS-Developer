@@ -1,0 +1,37 @@
+@use '/src/assets/styles/abstracts/mixins' as *;
+@use '/src/assets/styles/abstracts/variables' as *;
+@use '/src/assets/styles/abstracts/function' as *;
+
+.checkboxWrap {
+    @include font-style(Btn-text-2);
+    color: color(light, 900);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    position: relative;
+
+    :global(.dark-theme) & {
+        color: color(dark, 200);
+    }
+}
+
+.checkbox {
+    display: none;
+}
+
+.customBox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid color(light, 500);
+    border-radius: 2px;
+    background-color: color(main, white);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.2s ease;
+}
+
+.checkbox:checked + .customBox {
+    background-image: url('../../../img/icon-checkbox.svg'); // ✅ 체크 이미지
+    border: none;
+}

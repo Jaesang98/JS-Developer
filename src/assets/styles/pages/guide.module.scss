@@ -39,7 +39,7 @@
     padding: 12px 32px 12px 8px;
     cursor: pointer;
 
-    background-image: url('../../img/icon-up.svg');
+    background-image: url('../../img/icon-right.svg');
     background-position: right center;
 
     :global(.dark-theme) & {
@@ -249,4 +249,66 @@
             color: color(main, primary);
         }
     }
+}
+
+/* 가이드 메뉴작성 */
+.meun-content {
+    min-width: 1024px;
+    min-height: 1019px;
+    padding-top: 104px;
+    padding-left: 80px;
+    padding-right: 80px;
+    background-color: color(main, white);
+
+    :global(.dark-theme) & {
+        background-color: color(dark, 800);
+    }
+}
+
+.meun-title {
+    @include font-style(SubT);
+    color: color(light, black);
+
+    :global(.dark-theme) & {
+        color: color(main, white);
+    }
+}
+
+.menu-block {
+    margin-top: 48px;
+}
+
+.meun-write {
+    display: flex;
+    gap: 20px;
+}
+
+.meun-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.meun-subTitle {
+    @include font-style(B2);
+    color: color(light, 900);
+    margin-bottom: 12px;
+
+    :global(.dark-theme) & {
+        color: color(dark, 200);
+    }
+}
+
+.meun-check {
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.meun-btnBlock {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 140px;
 }

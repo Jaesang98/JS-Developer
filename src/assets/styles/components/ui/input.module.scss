@@ -5,6 +5,7 @@
 .input1 {
     @include font-style(Btn-text-2);
     border: 1px solid color(light, 500);
+    background-color: color(main, white);
     color: color(light, 700);
     height: 48px;
     border-radius: 8px;
@@ -15,6 +16,18 @@
     &:focus {
         outline: none;
         color: color(light, 900);
+    }
+
+    &:disabled {
+        background-color: color(light, 100);
+        color: color(light, 600);
+        border: 1px solid color(light, 400);
+
+        :global(.dark-theme) & {
+            background-color: color(dark, 700);
+            border: 1px solid color(dark, 600);
+            color: color(dark, 400);
+        }
     }
 
     :global(.dark-theme) & {
