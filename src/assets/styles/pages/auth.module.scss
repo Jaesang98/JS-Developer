@@ -91,3 +91,23 @@
 .login-naver {
     background-image: url('../../img/naver.png');
 }
+
+/* 회원가입 */
+.register-description {
+    @include font-style(T2);
+    color: color(light, black);
+    margin-bottom: 24px;
+
+    :global(.dark-theme) & {
+        color: color(dark, 100);
+    }
+}
+
+.register-description {
+    @include font-style(B3);
+    color: color(light, 900);
+
+    :global(.dark-theme) & {
+        color: color(dark, 200);
+    }
+}

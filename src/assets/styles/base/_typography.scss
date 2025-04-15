@@ -140,3 +140,29 @@ hr {
 .divider-56 {
     margin: 56px 0 56px 0;
 }
+
+.textdivider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #767680;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background-color: #e7e7ee;
+    }
+}
+
+:global(.dark-theme) :global(.textdivider) {
+    color: #9698b0;
+
+    &::before,
+    &::after {
+        background-color: #202228;
+    }
+}
