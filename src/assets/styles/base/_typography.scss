@@ -158,7 +158,7 @@ hr {
     }
 }
 
-:global(.dark-theme) :global(.textdivider) {
+.dark-theme .textdivider {
     color: #9698b0;
 
     &::before,
