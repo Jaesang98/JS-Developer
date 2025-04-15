@@ -114,3 +114,36 @@
     gap: 8px;
     margin-bottom: 40px;
 }
+
+/* 마이페이지 */
+.mypage-block {
+    width: 1200px;
+    min-height: 1016px;
+    padding: 104px;
+}
+
+.mypage-input {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+    width: 320px;
+}
+
+.mypage-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin-top: 80px;
+}
+
+.mypage-delete {
+    @include font-style(Btn-text-2);
+    color: color(light, 800);
+    cursor: pointer;
+
+    :global(.dark-theme) & {
+        color: color(dark, 300);
+    }
+}
