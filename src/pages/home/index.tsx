@@ -1,5 +1,5 @@
-import styles from '@/assets/styles/pages/home.module.scss';
 import { useNavigate } from 'react-router-dom';
+import styles from '@/assets/styles/pages/home.module.scss';
 import MainLayout from '@/components/layout/MainLayout';
 import Button from '@/components/ui/button';
 

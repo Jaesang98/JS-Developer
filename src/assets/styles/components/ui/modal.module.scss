@@ -1,0 +1,51 @@
+@use '/src/assets/styles/abstracts/mixins' as *;
+@use '/src/assets/styles/abstracts/variables' as *;
+@use '/src/assets/styles/abstracts/function' as *;
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); // 반투명 검정
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    @include font-style(Card-Body);
+    background-color: color(main, white);
+    color: color(light, black);
+    min-width: 380px;
+    min-height: 168px;
+    border-radius: 8px;
+    border: 1px solid color(light, 400);
+    padding: 24px 32px;
+
+    :global(.dark-theme) & {
+        background-color: color(dark, 900);
+        color: color(dark, 100);
+        border: 1px solid color(dark, 600);
+    }
+}
+
+.modal-title {
+    @include font-style(Card-Body);
+    color: color(light, black);
+    max-width: 240px;
+
+    :global(.dark-theme) & {
+        color: color(dark, 100);
+    }
+}
+
+.modal-button {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 28px;
+}
