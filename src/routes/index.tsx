@@ -14,26 +14,26 @@ import SecondPage from '@/pages/guide/second';
 import Error from '@/pages/error';
 
 const Router = () => {
-    return (
-        <>
-            <Routes>
-                <Route path="/" element={<Navigate to="/Home" />} />
-                <Route path="/Home" element={<Home />} />
-                <Route path="/Login" element={<Login />} />
-                <Route path="/Register" element={<Register />} />
-                <Route path="/EditInfo" element={<EditInfo />} />
-                <Route path="/Mypage" element={<Mypage />} />
-                <Route path="/Create" element={<Create />} />
-                <Route path="/Devx" element={<Devx />} />
-                <Route path="/Devx/:id" element={<DevxDetail />} />
-                <Route path="/Edit/:id" element={<DevxEdit />} />
-                <Route path="/Guide" element={<Guide />} />
-                <Route path="/FirstPage" element={<FirstPage />} />
-                <Route path="/SecondPage" element={<SecondPage />} />
-                <Route path="/*" element={<Error />} />
-            </Routes>
-        </>
-    );
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Navigate to="/Home" />} />
+        <Route path="/Home" element={<Home />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/EditInfo" element={<EditInfo />} />
+        <Route path="/Mypage" element={<Mypage />} />
+        <Route path="/Create" element={<Create />} />
+        <Route path="/Devx" element={<Devx />} />
+        <Route path="/Devx/:id" element={<DevxDetail />} />
+        <Route path="/Edit/:id" element={<DevxEdit />} />
+        <Route path="/Guide" element={<Guide />} />
+        <Route path="/FirstPage" element={<FirstPage />} />
+        <Route path="/SecondPage" element={<SecondPage />} />
+        <Route path="/*" element={<Error />} />
+      </Routes>
+    </>
+  );
 };
 
 export default Router;

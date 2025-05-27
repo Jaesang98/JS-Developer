@@ -1,11 +1,11 @@
 import styles from '@/assets/styles/components/ui/card.module.scss';
 
 interface CardProps {
-    title: String;
-    content: String;
-    name: String;
-    date: String;
-    children: React.ReactNode;
+  title: String;
+  content: String;
+  name: String;
+  date: String;
+  children: React.ReactNode;
 }
 
 /**
@@ -16,17 +16,17 @@ interface CardProps {
  * - btn5: 개발자 사전 단어 추가 버튼
  */
 const Card: React.FC<CardProps> = ({ title, content, name, date }) => {
-    return (
-        <div className={styles['cardwrap']}>
-            aa
-            <div className={styles['card-title']}>{title}</div>
-            <div className={styles['card-content']}>{content}</div>
-            <div className={styles['card-info']}>
-                <div className={styles['card-name']}>{name}</div>
-                <div className={styles['card-date']}>{date}</div>
-            </div>
-        </div>
-    );
+  return (
+    <div className={styles['cardwrap']}>
+      aa
+      <div className={styles['card-title']}>{title}</div>
+      <div className={styles['card-content']}>{content}</div>
+      <div className={styles['card-info']}>
+        <div className={styles['card-name']}>{name}</div>
+        <div className={styles['card-date']}>{date}</div>
+      </div>
+    </div>
+  );
 };
 
 export default Card;
