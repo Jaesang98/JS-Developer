@@ -13,8 +13,8 @@ interface RadioProps {
 const Radio: React.FC<RadioProps> = ({ option }) => {
   return (
     <>
-      {option.map((item) => (
-        <label className={styles.radioWrap}>
+      {option.map((item, idx) => (
+        <label className={styles.radioWrap} key={idx}>
           <input type="radio" name="option" className={styles.radio} />
           <span className={styles.radioIcon}></span>
           {item.name}

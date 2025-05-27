@@ -22,17 +22,17 @@ function AddImage() {
           <div className={styles['image-count']}>(3/10)</div>
           <div className={styles['image-list']}>
             <div className={styles['image-wrap']}>
-              <img src="https://picsum.photos/200/300" className={styles['image-preview']} />
+              <img src="https://picsum.photos/200/300" className={styles['image-preview']} alt="" />
               <div className={styles['image-delete']}></div>
             </div>
 
             <div className={styles['image-wrap']}>
-              <img src="https://picsum.photos/200/300" className={styles['image-preview']} />
+              <img src="https://picsum.photos/200/300" className={styles['image-preview']} alt="" />
               <div className={styles['image-delete']}></div>
             </div>
 
             <div className={styles['image-wrap']}>
-              <img src="https://picsum.photos/200/300" className={styles['image-preview']} />
+              <img src="https://picsum.photos/200/300" className={styles['image-preview']} alt="" />
               <div className={styles['image-delete']}></div>
             </div>
           </div>
@@ -41,7 +41,7 @@ function AddImage() {
 
       <div className={styles['image-content']}>
         <Button variant="btn7" children={'GIF 첨부하기'} width={112}></Button>
-        <img src="https://picsum.photos/200/300" className={`${styles['image-preview']} ${styles['gifimg']}`} />
+        <img src="https://picsum.photos/200/300" className={`${styles['image-preview']} ${styles['gifimg']}`} alt="" />
       </div>
 
       <div className={styles['image-content']}>
@@ -49,7 +49,7 @@ function AddImage() {
           <Input placeholder={'링크를 입력해 주세요.'} width={320}></Input>
           <Button variant="btn5" children={'확인'}></Button>
         </div>
-        <img src="https://picsum.photos/200/300" className={`${styles['image-preview']} ${styles['linkimg']}`} />
+        <img src="https://picsum.photos/200/300" className={`${styles['image-preview']} ${styles['linkimg']}`} alt="" />
       </div>
     </div>
   );

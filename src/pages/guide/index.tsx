@@ -46,7 +46,7 @@ function Guide() {
                 <div className={styles['guide-subTitle']}>1. 네이버 MAP</div>
                 <div className={styles['guide-description']}>
                   위에서 src경로에 이미지 파일이 있을 때는 상대경로로 지정하는 것이 안 되어서 두 가지 예시 방법을
-                  사용했다면, public에 있을 때는 다르다. 하지만, <code>&lt;header&gt;</code> 태그는 허용되지 않는 자손
+                  사용했다면,public에 있을 때는 다르다. 하지만, <code>&lt;header&gt;</code> 태그는 허용되지 않는 자손
                   요소와 허용되지 않는 조상 요소가 있습니다. 이러한 규칙들은 <code>&lt;header&gt;</code> 태그가 특정
                   상황에서 사용될 경우 웹 페이지의 콘텐츠를 파악하는데 어려움이 발생할 수 있기 때문에 생긴 것으로서,{' '}
                   <code>&lt;header&gt;</code> 태그를 사용할 때 반드시 고려해야 합니다.

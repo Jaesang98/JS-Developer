@@ -34,20 +34,20 @@ function Home() {
   const navigate = useNavigate();
 
   const pageOpen = () => {
-    navigate('/parameter/1');
+    void navigate('/parameter/1');
   };
 
   const pageOpen2 = () => {
-    navigate('/state', { state: '2' });
+    void navigate('/state', { state: '2' });
   };
 
   const pageOpen3 = () => {
-    navigate('/query?data=3');
+    void navigate('/query?data=3');
   };
 
   const { t, i18n } = useTranslation();
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng); // 언어 변경
+    void i18n.changeLanguage(lng); // 언어 변경
   };
 
   return (

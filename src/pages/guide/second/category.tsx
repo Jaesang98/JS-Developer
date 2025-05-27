@@ -16,7 +16,7 @@ function AddCategory() {
       </div>
 
       <div className={styles['code-content']}>
-        <img src="https://picsum.photos/200/300" className={`${styles['image-preview']} ${styles['testimg']}`} />
+        <img src="https://picsum.photos/200/300" className={`${styles['image-preview']} ${styles['testimg']}`} alt="" />
       </div>
 
       <div className={styles['code-bottom']}>

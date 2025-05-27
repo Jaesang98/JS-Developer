@@ -1,10 +1,10 @@
 import styles from '@/assets/styles/components/ui/card.module.scss';
 
 interface CardProps {
-  title: String;
-  content: String;
-  name: String;
-  date: String;
+  title: string;
+  content: string;
+  name: string;
+  date: string;
   children: React.ReactNode;
 }
 

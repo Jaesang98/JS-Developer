@@ -9,7 +9,7 @@ const resources = {
   ko: { translation: ko },
 };
 
-i18n.use(initReactI18next).init({
+void i18n.use(initReactI18next).init({
   resources,
   lng: 'en', // 초기 언어 설정
   fallbackLng: 'en', // 사용할 언어가 없을 경우 기본값
