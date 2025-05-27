@@ -8,7 +8,6 @@ interface ConfirmProps {
 }
 
 const ConfirmModal = ({ content, onClose }: ConfirmProps) => {
-    a;
     return (
         <>
             <div className={styles['modal-title']}>{content}</div>
