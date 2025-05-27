@@ -24,7 +24,7 @@ function Header() {
       <div
         className={styles['header-logo']}
         onClick={() => {
-          navigate('/');
+          void navigate('/');
         }}
       >
         JS-Developer
@@ -37,7 +37,7 @@ function Header() {
         <div
           className={styles['header-item']}
           onClick={() => {
-            navigate('/Devx');
+            void navigate('/Devx');
           }}
         >
           개발 사전
