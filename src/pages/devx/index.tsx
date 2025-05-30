@@ -11,9 +11,10 @@ import { useEffect, useState } from 'react';
 
 function Devx() {
   const navigate = useNavigate();
-  const { data, refetch } = useDevxListQuery();
   const [dictList, setDictList] = useState<DevxItem[]>();
   const [searchInput, setSearchInput] = useState('');
+
+  const { data, refetch } = useDevxListQuery(searchInput);
 
   // dictList 데이터 가공
   useEffect(() => {
