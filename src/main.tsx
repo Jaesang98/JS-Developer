@@ -5,11 +5,16 @@ import Router from './routes';
 import './i18n';
 import '@/assets/styles/base/reset';
 import '@/assets/styles/main.scss';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-        <BrowserRouter>
-            <Router />
-        </BrowserRouter>
-    </StrictMode>
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </QueryClientProvider>
+  </StrictMode>,
 );

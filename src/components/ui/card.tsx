@@ -18,7 +18,6 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ title, content, name, date }) => {
   return (
     <div className={styles['cardwrap']}>
-      aa
       <div className={styles['card-title']}>{title}</div>
       <div className={styles['card-content']}>{content}</div>
       <div className={styles['card-info']}>

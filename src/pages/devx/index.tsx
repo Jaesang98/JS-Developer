@@ -1,41 +1,44 @@
+import { useNavigate } from 'react-router-dom';
 import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/devx.module.scss';
 import Input from '@/components/ui/input';
 import Button from '@/components/ui/button';
 import Switch from '@/components/ui/switch';
 import Card from '@/components/ui/card';
-
-import axios from 'axios';
-import { useEffect } from 'react';
+import { useDevxListQuery } from '@/queries/devx/useListQuery';
+import { DevxItem } from '@/type/devx/list';
+import { useEffect, useState } from 'react';
 
 function Devx() {
-  useEffect(() => {
-    axios({
-      method: 'get',
-      url: 'http://localhost:8080/dictList',
-      data: {},
-    })
-      .then((response) => {
-        console.log(response.data.dictlist);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  const navigate = useNavigate();
+  const { data, refetch } = useDevxListQuery();
+  const [dictList, setDictList] = useState<DevxItem[]>();
+  const [searchInput, setSearchInput] = useState('');
 
+  // dictList 데이터 가공
   useEffect(() => {
-    axios({
-      method: 'get',
-      url: 'http://localhost:8080/dictDetail',
-      params: { id: 'D002' },
-    })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+    if (data?.dictList) {
+      setDictList(data.dictList);
+    }
+  }, [data]);
+
+  // 최신순, 가나다순 정렬
+  const listSort = (value: number) => {
+    if (!dictList) return;
+    const sortData = [...dictList];
+
+    if (value == 0) {
+      sortData.sort((a, b) => a.updated.localeCompare(b.updated));
+    } else {
+      sortData.sort((a, b) => a.dictTitle.localeCompare(b.dictTitle));
+    }
+    setDictList(sortData);
+  };
+
+  // 검색
+  const searchList = async () => {
+    await refetch();
+  };
 
   return (
     <MainLayout>
@@ -44,26 +47,47 @@ function Devx() {
           <div className={styles['devx-title']}>개발자 사전</div>
           <div className={styles['devx-filter']}>
             <div className={styles['devx-searchWrap']}>
-              <Input variant="input1"></Input>
-              <Button variant="btn4">검색</Button>
+              <Input
+                variant="input1"
+                onChange={(e) => setSearchInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    void searchList();
+                  }
+                }}
+              />
+              <Button variant="btn4" onClick={searchList}>
+                검색
+              </Button>
             </div>
             <div className={styles['devx-filterWrap']}>
-              <Switch onChange={(value) => console.log('선택된 값:', value)} />
-              <Button variant="btn5">단어 추가</Button>
+              <Switch onChange={(value) => listSort(value)} />
+              <Button
+                variant="btn5"
+                onClick={async () => {
+                  await navigate('/Edit');
+                }}
+              >
+                단어 추가
+              </Button>
             </div>
           </div>
           <div className={styles['devx-card']}>
-            {Array.from({ length: 8 }, (_, index) => (
-              <Card
-                key={index}
-                title={`Title ${index + 1}`}
-                content={`이것은 ${
-                  index + 1
-                }번째 카드의 내용입니다. 위에서 src경로에 이미지 파일이 있을 때는 상대경로로 지정하는 것이 안 되어서 두 가지 예시 방법을 사용했다면, public에 있을 때는 다르다.`}
-                name={`작성자 ${index + 1}`}
-                date={`2024-12-${30 - index}`}
-                children={undefined}
-              />
+            {dictList?.map((item, idx) => (
+              <div
+                key={idx}
+                onClick={async () => {
+                  await navigate(`/Devx/${item.dictId}`);
+                }}
+              >
+                <Card
+                  title={item.dictTitle}
+                  content={item.dictDescription}
+                  name={item.userName}
+                  date={item.updated.slice(0, 10)}
+                  children={undefined}
+                />
+              </div>
             ))}
           </div>
         </div>

@@ -3,27 +3,27 @@
 @use '/src/assets/styles/abstracts/function' as *;
 
 .required::after {
-    content: '*';
-    color: red;
-    margin-left: 7px;
+  content: '*';
+  color: red;
+  margin-left: 7px;
 }
 
 .success {
-    @include font-style(B3);
-    color: color(main, primary);
-    margin: 10px;
+  @include font-style(B3);
+  color: color(main, primary);
+  margin: 10px;
 }
 
 .warning {
-    @include font-style(B3);
-    color: #dc2626;
-    margin: 10px;
+  @include font-style(B3);
+  color: #dc2626;
+  margin: 10px;
 }
 
 .dark-theme .success {
-    color: #4ade80;
+  color: #4ade80;
 }
 
 .dark-theme .warning {
-    color: #facc15;
+  color: #facc15;
 }
