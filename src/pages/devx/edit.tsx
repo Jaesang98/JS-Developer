@@ -70,7 +70,14 @@ function DevxEdit() {
 
           <div className={styles['devxedit-block']}>
             <Button variant="btn4" width={136} children={'취소'}></Button>
-            <Button variant="btn5" width={136} children={'저장'}></Button>
+            <Button
+              variant="btn5"
+              width={136}
+              children={'저장'}
+              onClick={async () => {
+                await validation();
+              }}
+            ></Button>
           </div>
         </div>
       </div>
