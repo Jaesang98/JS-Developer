@@ -1,25 +1,46 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MDEditor from '@uiw/react-md-editor';
+
 import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/devx.module.scss';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import BaseModal from '@/components/ui/modal/BaseModal';
 import ConfirmModal from '@/components/ui/modal/ConfirmModal';
+
 import { useDevxDuplicateQuery } from '@/queries/devx/useDuplicationQuery';
+import { useAddDevxMutation } from '@/queries/devx/useAddQuery';
 
 function DevxEdit() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
+  const [value, setValue] = useState<string | undefined>('');
+  const [validate, setValidate] = useState(false);
+
   const { data, refetch } = useDevxDuplicateQuery(searchInput);
+  const addMutation = useAddDevxMutation();
 
   const validation = async () => {
     const result = await refetch();
     if (result.data.result == false) {
       setOpen(true);
+      setValidate(false);
     } else {
       setOpen(false);
+      setValidate(true);
+    }
+  };
+
+  const saveDict = () => {
+    if (validate) {
+      addMutation.mutate({
+        dictTitle: searchInput,
+        dictDescription: value || '',
+      });
+    } else {
+      alert('중복확인을 해주세요');
     }
   };
 
@@ -65,19 +86,14 @@ function DevxEdit() {
 
           <div className={styles['devxedit-description']}>
             <div className={`${styles['devxedit-title']} required`}>단어 설명</div>
-            <div className={styles['devxdetail-code']}></div>
+            <div className={styles['devxdetail-code']}>
+              <MDEditor data-color-mode="dark" value={value} onChange={setValue} height={320} />
+            </div>
           </div>
 
           <div className={styles['devxedit-block']}>
             <Button variant="btn4" width={136} children={'취소'}></Button>
-            <Button
-              variant="btn5"
-              width={136}
-              children={'저장'}
-              onClick={async () => {
-                await validation();
-              }}
-            ></Button>
+            <Button variant="btn5" width={136} children={'저장'} onClick={saveDict}></Button>
           </div>
         </div>
       </div>
