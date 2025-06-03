@@ -14,7 +14,7 @@ function DevxEdit() {
   const [searchInput, setSearchInput] = useState('');
   const { data, refetch } = useDevxDuplicateQuery(searchInput);
 
-  const validate = async () => {
+  const validation = async () => {
     const result = await refetch();
     if (result.data.result == false) {
       setOpen(true);
@@ -48,7 +48,7 @@ function DevxEdit() {
                 onChange={(e) => setSearchInput(e.target.value)}
                 onKeyDown={async (e) => {
                   if (e.key === 'Enter') {
-                    await validate();
+                    await validation();
                   }
                 }}
               ></Input>
@@ -57,7 +57,7 @@ function DevxEdit() {
                 width={124}
                 children={'중복 확인'}
                 disabled={searchInput === '' ? true : false}
-                onClick={validate}
+                onClick={validation}
               ></Button>
             </div>
             {data?.result == true ? <div className={styles['devxedit-success']}>등록 가능한 단어입니다.</div> : ''}
@@ -69,7 +69,7 @@ function DevxEdit() {
           </div>
 
           <div className={styles['devxedit-block']}>
-            <Button variant="btn4" width={136} children={'삭제'}></Button>
+            <Button variant="btn4" width={136} children={'취소'}></Button>
             <Button variant="btn5" width={136} children={'저장'}></Button>
           </div>
         </div>
