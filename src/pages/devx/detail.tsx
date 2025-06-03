@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import MDEditor from '@uiw/react-md-editor';
+
 import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/devx.module.scss';
 import Button from '@/components/ui/button';
@@ -33,7 +35,12 @@ function DevxDetail() {
               <div className={styles['devxdetail-name']}>작성자 : {dictDetail?.userName}</div>
               <div className={styles['devxdetail-date']}>작성일 : {dictDetail?.updated}</div>
             </div>
-            <div className={styles['devxdetail-code']}>{dictDetail?.dictDescription}</div>
+            <div className={styles['devxdetail-code']}>
+              <MDEditor.Markdown
+                source={dictDetail?.dictDescription}
+                style={{ whiteSpace: 'pre-wrap', padding: '1.5rem' }}
+              />
+            </div>
           </div>
         </div>
       ) : (

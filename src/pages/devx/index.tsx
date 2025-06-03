@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
+
 import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/devx.module.scss';
 import Input from '@/components/ui/input';
 import Button from '@/components/ui/button';
 import Switch from '@/components/ui/switch';
 import Card from '@/components/ui/card';
+
 import { useDevxListQuery } from '@/queries/devx/useListQuery';
 import { DevxItem } from '@/type/devx/list';
 import { useEffect, useState } from 'react';
