@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/devx.module.scss';
 import Button from '@/components/ui/button';
 import { useDevxDetailQuery } from '@/queries/devx/useDetailQuery';
 import { DevxItem } from '@/type/devx/detail';
-import { useEffect, useState } from 'react';
 
 function DevxDetail() {
   const dictId = useParams().id;

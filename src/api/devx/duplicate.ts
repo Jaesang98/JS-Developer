@@ -1,9 +1,9 @@
 import instance from '@/api/axiosInstance';
 
-export const fetchGetDevxList = async (dictTitle: string) => {
+export const fetchGetDevxDuplicate = async (dictTitle: string) => {
   const response = await instance({
     method: 'GET',
-    url: 'dictList',
+    url: 'duplicate',
     params: {
       dictTitle: dictTitle,
     },
