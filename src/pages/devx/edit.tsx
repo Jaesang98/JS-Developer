@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 
 import MainLayout from '@/components/layout/MainLayout';
@@ -7,21 +7,23 @@ import styles from '@/assets/styles/pages/devx.module.scss';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import BaseModal from '@/components/ui/modal/BaseModal';
-import ConfirmModal from '@/components/ui/modal/ConfirmModal';
+// import ConfirmModal from '@/components/ui/modal/ConfirmModal';
 import AlertModal from '@/components/ui/modal/AlertModal';
 
 import { useDevxDuplicateQuery } from '@/queries/devx/useDuplicationQuery';
 import { useDevxAddMutation } from '@/queries/devx/useAddQuery';
+import { useDevxUpdateMutation } from '@/queries/devx/useUpdateQuery';
 
 function DevxEdit() {
   // 데이터 흐름
   const navigate = useNavigate();
-  const dictId = useParams().id;
+  const dictData = useLocation().state?.data;
 
   // 모달창 변수
   const [alerOpen, setAlertOpen] = useState(false);
   const [alerContent, setAlerContent] = useState('');
-  const [open, setOpen] = useState(false);
+  const [alertType, setAlertType] = useState(false);
+  // const [open, setOpen] = useState(false);
 
   // 그 외 변수
   const [searchInput, setSearchInput] = useState('');
@@ -31,14 +33,16 @@ function DevxEdit() {
   // 서버통신
   const { data, refetch } = useDevxDuplicateQuery(searchInput);
   const addMutation = useDevxAddMutation();
+  const updateMutation = useDevxUpdateMutation();
 
   const validation = async () => {
     const result = await refetch();
     if (result.data.result == false) {
-      setOpen(true);
+      setAlertOpen(true);
+      setAlerContent('중복되는 단어가 존재합니다');
       setValidate(false);
     } else {
-      setOpen(false);
+      setAlertOpen(false);
       setValidate(true);
     }
   };
@@ -54,6 +58,7 @@ function DevxEdit() {
           onSuccess: async () => {
             setAlerContent('저장되었습니다.');
             setAlertOpen(true);
+            setAlertType(true);
           },
           onError: async () => {
             setAlerContent('등록 중 오류가 발생했습니다.');
@@ -67,6 +72,39 @@ function DevxEdit() {
     }
   };
 
+  const updateDict = () => {
+    if (dictData?.dictTitle === searchInput || validate) {
+      updateMutation.mutate(
+        {
+          dictId: dictData.dictId,
+          dictTitle: searchInput,
+          dictDescription: value || '',
+        },
+        {
+          onSuccess: async () => {
+            setAlerContent('수정되었습니다.');
+            setAlertOpen(true);
+            setAlertType(true);
+          },
+          onError: async () => {
+            setAlerContent('수정 중 오류가 발생했습니다.');
+            setAlertOpen(true);
+          },
+        },
+      );
+    } else {
+      setAlerContent('중복확인을 해주세요.');
+      setAlertOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    if (dictData) {
+      setValue(dictData.dictDescription);
+      setSearchInput(dictData.dictTitle);
+    }
+  }, [dictData]);
+
   return (
     <MainLayout>
       <div className={styles['devx-contentWrap']}>
@@ -76,17 +114,14 @@ function DevxEdit() {
             <AlertModal
               onClose={async () => {
                 setAlertOpen(false);
-                await navigate(`/Devx`);
+
+                if (alertType == true) {
+                  await navigate(-1);
+                }
               }}
               content={alerContent}
             />
-          </BaseModal>
-        )}
-
-        {/* 기본 confirm모달창 */}
-        {open && (
-          <BaseModal onClose={() => setOpen(false)}>
-            <ConfirmModal
+            {/* <ConfirmModal
               cancelLabel={'취소'}
               confirmLabel={'이동'}
               onClose={() => {
@@ -96,7 +131,7 @@ function DevxEdit() {
                 await navigate(`/Devx/${data.dictId}`);
               }}
               content="중복되는 단어가 존재합니다. 수정 페이지로 이동할까요?"
-            />
+            /> */}
           </BaseModal>
         )}
 
@@ -105,6 +140,7 @@ function DevxEdit() {
             <div className={`${styles['devxedit-title']} required`}>단어</div>
             <div className={styles['devxedit-search']}>
               <Input
+                defaultValue={dictData?.dictTitle ? dictData?.dictTitle : ''}
                 placeholder={'등록할 단어를 입력해 주세요.'}
                 onChange={(e) => setSearchInput(e.target.value)}
                 onKeyDown={async (e) => {
@@ -117,7 +153,7 @@ function DevxEdit() {
                 variant="btn7"
                 width={124}
                 children={'중복 확인'}
-                disabled={searchInput === '' ? true : false}
+                disabled={searchInput === '' || searchInput === dictData?.dictTitle ? true : false}
                 onClick={validation}
               ></Button>
             </div>
@@ -140,7 +176,12 @@ function DevxEdit() {
                 await navigate(-1);
               }}
             ></Button>
-            <Button variant="btn5" width={136} children={dictId ? '수정' : '저장'} onClick={saveDict}></Button>
+            <Button
+              variant="btn5"
+              width={136}
+              children={dictData ? '수정' : '저장'}
+              onClick={dictData ? updateDict : saveDict}
+            ></Button>
           </div>
         </div>
       </div>

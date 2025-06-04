@@ -83,7 +83,11 @@ function DevxDetail() {
                   variant="btn5"
                   children={'수정'}
                   onClick={async () => {
-                    await navigate(`/Edit/${dictId}`);
+                    await navigate(`/Edit/${dictId}`, {
+                      state: {
+                        data: dictDetail,
+                      },
+                    });
                   }}
                 />
               </div>
@@ -92,12 +96,16 @@ function DevxDetail() {
               <div className={styles['devxdetail-name']}>작성자 : {dictDetail?.userName}</div>
               <div className={styles['devxdetail-date']}>작성일 : {dictDetail?.updated}</div>
             </div>
-            <div className={styles['devxdetail-code']}>
-              <MDEditor.Markdown
-                source={dictDetail?.dictDescription}
-                style={{ whiteSpace: 'pre-wrap', padding: '1.5rem', minHeight: 320 }}
-              />
-            </div>
+            {dictDetail?.dictDescription ? (
+              <div className={styles['devxdetail-code']}>
+                <MDEditor.Markdown
+                  source={dictDetail?.dictDescription}
+                  style={{ whiteSpace: 'pre-wrap', padding: '1.5rem', minHeight: 320 }}
+                />
+              </div>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       ) : (
