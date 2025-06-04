@@ -3,160 +3,164 @@
 @use '/src/assets/styles/abstracts/function' as *;
 
 .btn1 {
-    @include font-style(Btn-text-3);
-    background-color: color(main, primary2);
-    color: color(main, white);
-    padding: 9.5px 16px;
-    border-radius: 6px;
-    border-width: 1px;
-    border: 1px solid color(main, primary);
-    cursor: pointer;
+  @include font-style(Btn-text-3);
+  background-color: color(main, primary2);
+  color: color(main, white);
+  padding: 9.5px 16px;
+  border-radius: 6px;
+  border-width: 1px;
+  border: 1px solid color(main, primary);
+  cursor: pointer;
 }
 
 .btn2 {
-    @include font-style(Main-Btn-1);
-    background-color: color(main, primary);
-    color: color(dark, 100);
-    padding: 20px 105px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 2px 4px 0px color(light, 100);
+  @include font-style(Main-Btn-1);
+  background-color: color(main, primary);
+  color: color(dark, 100);
+  padding: 20px 105px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px color(light, 100);
 
-    :global(.dark-theme) & {
-        background-color: color(main, primary2);
-        box-shadow: 0px 2px 4px 0px color(dark, 900);
-    }
+  :global(.dark-theme) & {
+    background-color: color(main, primary2);
+    box-shadow: 0px 2px 4px 0px color(dark, 900);
+  }
 
-    &:hover {
-        background-color: color(main, primary2);
-        border: 1px solid #ffffff66;
-        box-shadow: 0px 0px 12px 0px #00b07599;
-        transition: color 0.1s ease-in-out;
-    }
+  &:hover {
+    background-color: color(main, primary2);
+    border: 1px solid #ffffff66;
+    box-shadow: 0px 0px 12px 0px #00b07599;
+    transition: color 0.1s ease-in-out;
+  }
 }
 
 .btn3 {
-    @include font-style(Main-Btn-2);
-    background-color: color(main, white);
-    color: color(light, black);
-    padding: 19.5px 70px 20.5px 26px;
-    border-radius: 12px;
-    border: 2px solid color(light, 300);
-    cursor: pointer;
-    position: relative;
-    box-shadow: 0px 2px 4px 0px color(light, 100);
+  @include font-style(Main-Btn-2);
+  background-color: color(main, white);
+  color: color(light, black);
+  padding: 19.5px 70px 20.5px 26px;
+  border-radius: 12px;
+  border: 2px solid color(light, 300);
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0px 2px 4px 0px color(light, 100);
 
-    background-image: url('../../../img/btnArrow.svg');
-    background-position: right 24px center;
+  background-image: url('../../../img/btnArrow.svg');
+  background-position: right 24px center;
 
-    :global(.dark-theme) & {
-        background-color: color(dark, 800);
-        color: color(dark, 100);
-        border: 2px solid color(dark, 600);
-        box-shadow: 0px 2px 4px 0px color(dark, 900);
-    }
+  :global(.dark-theme) & {
+    background-color: color(dark, 800);
+    color: color(dark, 100);
+    border: 2px solid color(dark, 600);
+    box-shadow: 0px 2px 4px 0px color(dark, 900);
+  }
 }
 
 .btn4 {
-    @include font-style(Btn-text-2);
-    background-color: color(main, white);
-    color: color(light, 900);
-    padding: 14.5px 24px;
-    border-radius: 8px;
-    border: 1px solid color(light, 500);
-    cursor: pointer;
+  @include font-style(Btn-text-2);
+  background-color: color(main, white);
+  color: color(light, 900);
+  padding: 14.5px 24px;
+  border-radius: 8px;
+  border: 1px solid color(light, 500);
+  cursor: pointer;
+  max-height: 48px;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: color(light, 300);
+  }
+
+  :global(.dark-theme) & {
+    background-color: color(dark, 800);
+    color: color(dark, 200);
+    border: 1px solid color(dark, 500);
 
     &:hover {
-        background-color: color(light, 300);
+      background-color: color(dark, 700);
     }
-
-    :global(.dark-theme) & {
-        background-color: color(dark, 800);
-        color: color(dark, 200);
-        border: 1px solid color(dark, 500);
-
-        &:hover {
-            background-color: color(dark, 700);
-        }
-    }
+  }
 }
 
 .btn5 {
-    @include font-style(Btn-text-1);
-    background-color: color(light, btn);
-    color: color(main, white);
-    padding: 14.5px 24px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
+  @include font-style(Btn-text-1);
+  background-color: color(light, btn);
+  color: color(main, white);
+  padding: 14.5px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  max-height: 48px;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: color(light, btn-hover);
+    color: color(light, 600);
+  }
+
+  :global(.dark-theme) & {
+    background-color: color(dark, btn2);
+    color: color(dark, 100);
 
     &:hover {
-        background-color: color(light, btn-hover);
-        color: color(light, 600);
+      border: 1px solid color(dark, 300);
+      background-color: color(dark, btn-hover);
     }
-
-    :global(.dark-theme) & {
-        background-color: color(dark, btn2);
-        color: color(dark, 100);
-
-        &:hover {
-            border: 1px solid color(dark, 300);
-            background-color: color(dark, btn-hover);
-        }
-    }
+  }
 }
 
 .btn6 {
-    @include font-style(Btn-text-1);
-    color: color(main, primary);
-    border: 1px solid color(main, primary);
-    width: 290px;
-    height: 48px;
-    // padding: 14.5px 112px;
-    border-radius: 8px;
-    cursor: pointer;
+  @include font-style(Btn-text-1);
+  color: color(main, primary);
+  border: 1px solid color(main, primary);
+  width: 290px;
+  height: 48px;
+  // padding: 14.5px 112px;
+  border-radius: 8px;
+  cursor: pointer;
 
-    &:hover {
-        background-color: color(main, primary);
-        color: color(main, white);
-    }
+  &:hover {
+    background-color: color(main, primary);
+    color: color(main, white);
+  }
 }
 
 .btn7 {
-    @include font-style(Btn-text-2);
+  @include font-style(Btn-text-2);
+  color: color(main, primary2);
+  border: 1px solid color(main, primary);
+  width: 290px;
+  height: 48px;
+  // padding: 14.5px 112px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: color(main, primary3);
     color: color(main, primary2);
-    border: 1px solid color(main, primary);
-    width: 290px;
-    height: 48px;
-    // padding: 14.5px 112px;
-    border-radius: 8px;
-    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: color(light, 200);
+    color: color(light, 600);
+    border: 1px solid color(light, 500);
+  }
+
+  :global(.dark-theme) & {
+    background-color: color(dark, btn2);
+    color: color(main, primary2);
 
     &:hover {
-        background-color: color(main, primary3);
-        color: color(main, primary2);
+      background-color: #00b0751f;
+      color: color(main, primary2);
     }
 
     &:disabled {
-        background-color: color(light, 200);
-        color: color(light, 600);
-        border: 1px solid color(light, 500);
+      background-color: color(dark, 700);
+      color: color(dark, 400);
+      border: 1px solid color(dark, 600);
     }
-
-    :global(.dark-theme) & {
-        background-color: color(dark, btn2);
-        color: color(main, primary2);
-
-        &:hover {
-            background-color: #00b0751f;
-            color: color(main, primary2);
-        }
-
-        &:disabled {
-            background-color: color(dark, 700);
-            color: color(dark, 400);
-            border: 1px solid color(dark, 600);
-        }
-    }
+  }
 }
