@@ -3,7 +3,7 @@ import instance from '@/api/axiosInstance';
 export const fetchGetDevxList = async (dictTitle: string) => {
   const response = await instance({
     method: 'GET',
-    url: 'dictList',
+    url: 'dict/dictList',
     params: {
       dictTitle: dictTitle,
     },
