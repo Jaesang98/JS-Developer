@@ -3,7 +3,7 @@ import { fetchGetDevxList } from '@/api/devx/list';
 
 export const useDevxListQuery = (dictTitle: string, queryConfig = {}) => {
   return useQuery({
-    queryKey: ['devx', 'list'],
+    queryKey: ['devx', 'list', dictTitle],
     queryFn: () => fetchGetDevxList(dictTitle),
     retry: 3,
     ...queryConfig,

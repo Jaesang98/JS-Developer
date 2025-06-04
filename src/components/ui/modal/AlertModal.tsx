@@ -1,25 +1,21 @@
-import styles from '@/assets/styles/components/ui/input.module.scss';
+import styles from '@/assets/styles/components/ui/modal.module.scss';
+import Button from '@/components/ui/button';
 
-interface InputProps {
-    variant?: 'input1' | 'input2' | 'input3';
-    defaultValue?: string;
-    width?: number;
-    placeholder?: string;
-    disabled?: boolean;
+interface AlertProps {
+  // title: string;
+  content: string;
+  onClose: () => void;
 }
 
-/**
- * - input1: 개발자 사전 인풋
- */
-const Input: React.FC<InputProps> = ({ variant = 'input1', defaultValue, width = '320px', placeholder = '', disabled = false }) => {
-    return (
-        <input
-            className={`${styles[variant]}`}
-            style={{ width: width ? `${width}px` : undefined }}
-            defaultValue={defaultValue ? defaultValue : ''}
-            placeholder={placeholder}
-            disabled={disabled}></input>
-    );
+const AlertModal = ({ content, onClose }: AlertProps) => {
+  return (
+    <>
+      <div className={styles['modal-title']}>{content}</div>
+      <div className={styles['modal-button']}>
+        <Button variant="btn5" children={'확인'} onClick={onClose}></Button>
+      </div>
+    </>
+  );
 };
 
-export default Input;
+export default AlertModal;

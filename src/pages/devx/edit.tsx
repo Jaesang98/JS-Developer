@@ -8,12 +8,15 @@ import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import BaseModal from '@/components/ui/modal/BaseModal';
 import ConfirmModal from '@/components/ui/modal/ConfirmModal';
+import AlertModal from '@/components/ui/modal/AlertModal';
 
 import { useDevxDuplicateQuery } from '@/queries/devx/useDuplicationQuery';
 import { useAddDevxMutation } from '@/queries/devx/useAddQuery';
 
 function DevxEdit() {
   const navigate = useNavigate();
+  const [alerOpen, setAlertOpen] = useState(false);
+  const [alerContent, setAlerContent] = useState('');
   const [open, setOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [value, setValue] = useState<string | undefined>('');
@@ -35,18 +38,44 @@ function DevxEdit() {
 
   const saveDict = () => {
     if (validate) {
-      addMutation.mutate({
-        dictTitle: searchInput,
-        dictDescription: value || '',
-      });
+      addMutation.mutate(
+        {
+          dictTitle: searchInput,
+          dictDescription: value || '',
+        },
+        {
+          onSuccess: async () => {
+            await setAlerContent('저장되었습니다.');
+            setAlertOpen(true);
+          },
+          onError: async () => {
+            await setAlerContent('등록 중 오류가 발생했습니다.');
+            setAlertOpen(true);
+          },
+        },
+      );
     } else {
-      alert('중복확인을 해주세요');
+      setAlerContent('중복확인을 해주세요.');
+      setAlertOpen(true);
     }
   };
 
   return (
     <MainLayout>
       <div className={styles['devx-contentWrap']}>
+        {/* 기본 alert모달창 */}
+        {alerOpen && (
+          <BaseModal onClose={() => setAlertOpen(false)}>
+            <AlertModal
+              onClose={() => {
+                setAlertOpen(false);
+              }}
+              content={alerContent}
+            />
+          </BaseModal>
+        )}
+
+        {/* 기본 confirm모달창 */}
         {open && (
           <BaseModal onClose={() => setOpen(false)}>
             <ConfirmModal
@@ -60,6 +89,7 @@ function DevxEdit() {
             />
           </BaseModal>
         )}
+
         <div className={styles['devxdetail-content']}>
           <div className={styles['devxedit-titleBlock']}>
             <div className={`${styles['devxedit-title']} required`}>단어</div>
