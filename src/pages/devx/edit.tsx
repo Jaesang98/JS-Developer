@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 
 import MainLayout from '@/components/layout/MainLayout';
@@ -14,14 +14,21 @@ import { useDevxDuplicateQuery } from '@/queries/devx/useDuplicationQuery';
 import { useDevxAddMutation } from '@/queries/devx/useAddQuery';
 
 function DevxEdit() {
+  // 데이터 흐름
   const navigate = useNavigate();
+  const dictId = useParams().id;
+
+  // 모달창 변수
   const [alerOpen, setAlertOpen] = useState(false);
   const [alerContent, setAlerContent] = useState('');
   const [open, setOpen] = useState(false);
+
+  // 그 외 변수
   const [searchInput, setSearchInput] = useState('');
   const [value, setValue] = useState<string | undefined>('');
   const [validate, setValidate] = useState(false);
 
+  // 서버통신
   const { data, refetch } = useDevxDuplicateQuery(searchInput);
   const addMutation = useDevxAddMutation();
 
@@ -45,11 +52,11 @@ function DevxEdit() {
         },
         {
           onSuccess: async () => {
-            await setAlerContent('저장되었습니다.');
+            setAlerContent('저장되었습니다.');
             setAlertOpen(true);
           },
           onError: async () => {
-            await setAlerContent('등록 중 오류가 발생했습니다.');
+            setAlerContent('등록 중 오류가 발생했습니다.');
             setAlertOpen(true);
           },
         },
@@ -125,8 +132,15 @@ function DevxEdit() {
           </div>
 
           <div className={styles['devxedit-block']}>
-            <Button variant="btn4" width={136} children={'취소'}></Button>
-            <Button variant="btn5" width={136} children={'저장'} onClick={saveDict}></Button>
+            <Button
+              variant="btn4"
+              width={136}
+              children={'취소'}
+              onClick={async () => {
+                await navigate(-1);
+              }}
+            ></Button>
+            <Button variant="btn5" width={136} children={dictId ? '수정' : '저장'} onClick={saveDict}></Button>
           </div>
         </div>
       </div>

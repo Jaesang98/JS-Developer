@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 
 import MainLayout from '@/components/layout/MainLayout';
@@ -13,13 +13,18 @@ import { useDevxDeleteMutation } from '@/queries/devx/useDeleteQuery';
 import { DevxItem } from '@/type/devx/detail';
 
 function DevxDetail() {
+  // 데이터 흐름
   const navigate = useNavigate();
 
+  // 모달창 변수
   const [open, setOpen] = useState(false);
+
+  // 그 외 변수
   const dictId = useParams().id;
-  const { data } = useDevxDetailQuery(dictId || '');
   const [dictDetail, setDictDetail] = useState<DevxItem>();
 
+  // 서버통신
+  const { data } = useDevxDetailQuery(dictId || '');
   const deleteMutation = useDevxDeleteMutation();
 
   useEffect(() => {
@@ -74,7 +79,13 @@ function DevxDetail() {
                     setOpen(true);
                   }}
                 />
-                <Button variant="btn5" children={'수정'} />
+                <Button
+                  variant="btn5"
+                  children={'수정'}
+                  onClick={async () => {
+                    await navigate(`/Edit/${dictId}`);
+                  }}
+                />
               </div>
             </div>
             <div className={styles['devxdetail-info']}>

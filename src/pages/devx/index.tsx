@@ -12,10 +12,14 @@ import { DevxItem } from '@/type/devx/list';
 import { useEffect, useState } from 'react';
 
 function Devx() {
+  // 데이터 흐름
   const navigate = useNavigate();
+
+  // 그 외 변수
   const [dictList, setDictList] = useState<DevxItem[]>();
   const [searchInput, setSearchInput] = useState('');
 
+  // 서버통신
   const { data, refetch } = useDevxListQuery(searchInput);
 
   // dictList 데이터 가공
