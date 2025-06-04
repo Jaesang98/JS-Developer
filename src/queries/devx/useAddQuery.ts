@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { fetchPostAddDevx } from '@/api/devx/add';
 
-export const useAddDevxMutation = () => {
+export const useDevxAddMutation = () => {
   const queryClient = useQueryClient();
 
   const AddDevxMutation = useMutation({

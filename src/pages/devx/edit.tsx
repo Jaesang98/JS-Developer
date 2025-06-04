@@ -11,7 +11,7 @@ import ConfirmModal from '@/components/ui/modal/ConfirmModal';
 import AlertModal from '@/components/ui/modal/AlertModal';
 
 import { useDevxDuplicateQuery } from '@/queries/devx/useDuplicationQuery';
-import { useAddDevxMutation } from '@/queries/devx/useAddQuery';
+import { useDevxAddMutation } from '@/queries/devx/useAddQuery';
 
 function DevxEdit() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function DevxEdit() {
   const [validate, setValidate] = useState(false);
 
   const { data, refetch } = useDevxDuplicateQuery(searchInput);
-  const addMutation = useAddDevxMutation();
+  const addMutation = useDevxAddMutation();
 
   const validation = async () => {
     const result = await refetch();
@@ -67,8 +67,9 @@ function DevxEdit() {
         {alerOpen && (
           <BaseModal onClose={() => setAlertOpen(false)}>
             <AlertModal
-              onClose={() => {
+              onClose={async () => {
                 setAlertOpen(false);
+                await navigate(`/Devx`);
               }}
               content={alerContent}
             />
@@ -79,6 +80,8 @@ function DevxEdit() {
         {open && (
           <BaseModal onClose={() => setOpen(false)}>
             <ConfirmModal
+              cancelLabel={'취소'}
+              confirmLabel={'이동'}
               onClose={() => {
                 setOpen(false);
               }}
