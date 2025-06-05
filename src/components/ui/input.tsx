@@ -6,6 +6,7 @@ interface InputProps {
   width?: number;
   placeholder?: string;
   disabled?: boolean;
+  type?;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
@@ -19,6 +20,7 @@ const Input: React.FC<InputProps> = ({
   width = '320px',
   placeholder = '',
   disabled = false,
+  type,
   onChange,
   onKeyDown,
 }) => {
@@ -31,6 +33,7 @@ const Input: React.FC<InputProps> = ({
       disabled={disabled}
       onChange={onChange}
       onKeyDown={onKeyDown}
+      type={type || 'text'}
     ></input>
   );
 };

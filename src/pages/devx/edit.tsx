@@ -7,7 +7,6 @@ import styles from '@/assets/styles/pages/devx.module.scss';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import BaseModal from '@/components/ui/modal/BaseModal';
-// import ConfirmModal from '@/components/ui/modal/ConfirmModal';
 import AlertModal from '@/components/ui/modal/AlertModal';
 
 import { useDevxDuplicateQuery } from '@/queries/devx/useDuplicationQuery';

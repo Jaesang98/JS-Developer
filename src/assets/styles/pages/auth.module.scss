@@ -3,147 +3,148 @@
 @use '/src/assets/styles/abstracts/function' as *;
 
 .login-contentWrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .login-block {
-    width: 1200px;
-    min-height: 1016px;
-    padding: 104px 440px;
+  width: 1200px;
+  min-height: 1016px;
+  padding: 104px 440px;
 }
 
 .login-title {
-    @include font-style(T2);
-    color: color(light, black);
-    margin-bottom: 40px;
+  @include font-style(T2);
+  color: color(light, black);
+  margin-bottom: 40px;
 
-    :global(.dark-theme) & {
-        color: color(dark, 100);
-    }
+  :global(.dark-theme) & {
+    color: color(dark, 100);
+  }
 }
 
 .login-input {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .login-check {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .login-btn {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 
-    button {
-        height: 52px;
-    }
+  button {
+    height: 52px;
+  }
 }
 
 .login-help {
-    display: flex;
-    gap: 24px;
-    padding-left: 10.5px;
-    padding-right: 10.5px;
-    margin-bottom: 64px;
+  display: flex;
+  gap: 24px;
+  padding-left: 10.5px;
+  padding-right: 10.5px;
+  margin-bottom: 64px;
 }
 
 .login-helpItem {
-    @include font-style(B4);
-    color: color(light, 900);
+  @include font-style(B4);
+  color: color(light, 900);
+  cursor: pointer;
 
-    :global(.dark-theme) & {
-        color: color(dark, 200);
-    }
+  :global(.dark-theme) & {
+    color: color(dark, 200);
+  }
 }
 
 .login-authList {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .login-google,
 .login-kakao,
 .login-naver {
-    width: 320px;
-    height: 52px;
-    cursor: pointer;
+  width: 320px;
+  height: 52px;
+  cursor: pointer;
 }
 
 .login-google {
-    background-image: url('../../img/google.png');
+  background-image: url('../../img/google.png');
 
-    :global(.dark-theme) & {
-        background-image: url('../../img/google-dark.png');
-    }
+  :global(.dark-theme) & {
+    background-image: url('../../img/google-dark.png');
+  }
 }
 
 .login-kakao {
-    background-image: url('../../img/kakao.png');
+  background-image: url('../../img/kakao.png');
 }
 
 .login-naver {
-    background-image: url('../../img/naver.png');
+  background-image: url('../../img/naver.png');
 }
 
 /* 회원가입 */
 .register-description,
 .edit-description {
-    @include font-style(B3);
-    color: color(light, 900);
+  @include font-style(B3);
+  color: color(light, 900);
 
-    :global(.dark-theme) & {
-        color: color(dark, 200);
-    }
+  :global(.dark-theme) & {
+    color: color(dark, 200);
+  }
 }
 
 /* 비밀번호 변경 */
 .register-description {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .register-input {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
 }
 
 /* 마이페이지 */
 .mypage-block {
-    width: 1200px;
-    min-height: 1016px;
-    padding: 104px;
+  width: 1200px;
+  min-height: 1016px;
+  padding: 104px;
 }
 
 .mypage-input {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 32px;
-    width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+  width: 320px;
 }
 
 .mypage-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-top: 80px;
 }
 
 .mypage-delete {
-    @include font-style(Btn-text-2);
-    color: color(light, 800);
-    cursor: pointer;
+  @include font-style(Btn-text-2);
+  color: color(light, 800);
+  cursor: pointer;
 
-    :global(.dark-theme) & {
-        color: color(dark, 300);
-    }
+  :global(.dark-theme) & {
+    color: color(dark, 300);
+  }
 }

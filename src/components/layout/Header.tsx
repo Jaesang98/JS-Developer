@@ -23,8 +23,8 @@ function Header() {
     <div className={styles['header']}>
       <div
         className={styles['header-logo']}
-        onClick={() => {
-          void navigate('/');
+        onClick={async () => {
+          await navigate('/');
         }}
       >
         JS-Developer
@@ -36,8 +36,8 @@ function Header() {
         </div>
         <div
           className={styles['header-item']}
-          onClick={() => {
-            void navigate('/Devx');
+          onClick={async () => {
+            await navigate('/Devx');
           }}
         >
           개발 사전
@@ -47,7 +47,13 @@ function Header() {
 
       <div className={styles['header-control']}>
         <div className={styles['header-switch']} onClick={toggleDarkMode}></div>
-        <Button variant={'btn1'} children={'로그인'}></Button>
+        <Button
+          variant={'btn1'}
+          children={'로그인'}
+          onClick={async () => {
+            await navigate('/Login');
+          }}
+        ></Button>
       </div>
     </div>
   );

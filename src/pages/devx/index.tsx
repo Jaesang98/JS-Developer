@@ -57,9 +57,9 @@ function Devx() {
               <Input
                 variant="input1"
                 onChange={(e) => setSearchInput(e.target.value)}
-                onKeyDown={(e) => {
+                onKeyDown={async (e) => {
                   if (e.key === 'Enter') {
-                    void searchList();
+                    await searchList();
                   }
                 }}
               />
