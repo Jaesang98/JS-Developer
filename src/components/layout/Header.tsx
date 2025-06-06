@@ -1,23 +1,25 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import styles from '@/assets/styles/components/layout/header.module.scss';
 import Button from '@/components/ui/button';
 
+import { useUserInfoStore, useDarkModeStore } from '@/stores/useStore';
+
 function Header() {
+  // 데이터 흐름
   const navigate = useNavigate();
+  const { isDarkMode, toggleDarkMode } = useDarkModeStore();
+  const { userInfo, logout } = useUserInfoStore();
 
-  //다크모드 전환
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const toggleDarkMode = () => {
-    const newMode = !isDarkMode;
-    setIsDarkMode(newMode);
-
-    if (newMode) {
+  // 그 외 변수
+  useEffect(() => {
+    if (isDarkMode) {
       document.body.classList.add('dark-theme');
     } else {
       document.body.classList.remove('dark-theme');
     }
-  };
+  }, [isDarkMode]);
 
   return (
     <div className={styles['header']}>
@@ -49,9 +51,14 @@ function Header() {
         <div className={styles['header-switch']} onClick={toggleDarkMode}></div>
         <Button
           variant={'btn1'}
-          children={'로그인'}
+          children={userInfo.userId == '' ? '로그인' : '로그아웃'}
           onClick={async () => {
-            await navigate('/Login');
+            if (userInfo.userId) {
+              logout();
+              await navigate('/');
+            } else {
+              await navigate('/Login');
+            }
           }}
         ></Button>
       </div>

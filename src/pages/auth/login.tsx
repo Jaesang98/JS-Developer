@@ -1,21 +1,21 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AxiosError } from 'axios';
 
 import styles from '@/assets/styles/pages/auth.module.scss';
 import MainLayout from '@/components/layout/MainLayout';
 import Button from '@/components/ui/button';
 import CheckBox from '@/components/ui/checkbox';
 import Input from '@/components/ui/input';
-
-import { useLoginJWTMutation } from '@/queries/auth/useLoginJWTMutation';
-import { useState } from 'react';
-
 import BaseModal from '@/components/ui/modal/BaseModal';
 import AlertModal from '@/components/ui/modal/AlertModal';
+
+import { useLoginJWTMutation } from '@/queries/auth/useLoginJWTMutation';
+import { useUserInfoStore } from '@/stores/useStore';
 
 function Login() {
   // 데이터 흐름
   const navigate = useNavigate();
+  const { userInfo, setUser } = useUserInfoStore();
 
   //모달창 변수
   const [alerOpen, setAlertOpen] = useState(false);
@@ -46,7 +46,8 @@ function Login() {
       {
         onSuccess: async (data) => {
           if (data?.userInfo) {
-            console.log(data.userInfo);
+            setUser(data.userInfo);
+            await navigate('/');
           }
         },
         onError: async () => {

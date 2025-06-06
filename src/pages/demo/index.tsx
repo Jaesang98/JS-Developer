@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useUserInfoStore } from '@/stores/userInfo';
+import { useUserInfoStore } from '@/stores/useStore';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
