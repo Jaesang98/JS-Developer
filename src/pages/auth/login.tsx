@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from '@/assets/styles/pages/auth.module.scss';
@@ -15,7 +15,7 @@ import { useUserInfoStore } from '@/stores/useStore';
 function Login() {
   // 데이터 흐름
   const navigate = useNavigate();
-  const { userInfo, setUser } = useUserInfoStore();
+  const { setUser } = useUserInfoStore();
 
   //모달창 변수
   const [alerOpen, setAlertOpen] = useState(false);
