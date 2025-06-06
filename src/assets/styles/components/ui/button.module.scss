@@ -100,6 +100,12 @@
     color: color(light, 600);
   }
 
+  &:disabled {
+    background-color: color(light, 200);
+    color: color(light, 600);
+    border: 1px solid color(light, 500);
+  }
+
   :global(.dark-theme) & {
     background-color: color(dark, btn2);
     color: color(dark, 100);
@@ -107,6 +113,12 @@
     &:hover {
       border: 1px solid color(dark, 300);
       background-color: color(dark, btn-hover);
+    }
+
+    &:disabled {
+      background-color: color(dark, 700);
+      color: color(dark, 400);
+      border: 1px solid color(dark, 600);
     }
   }
 }

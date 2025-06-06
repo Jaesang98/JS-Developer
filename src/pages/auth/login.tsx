@@ -119,7 +119,14 @@ function Login() {
           <div className={styles['login-help']}>
             <div className={styles['login-helpItem']}>아이디 찾기</div>
             <div className={styles['login-helpItem']}>비밀번호 찾기</div>
-            <div className={styles['login-helpItem']}>회원가입</div>
+            <div
+              className={styles['login-helpItem']}
+              onClick={async () => {
+                await navigate('/Create');
+              }}
+            >
+              회원가입
+            </div>
           </div>
 
           <div className={styles['login-authList']}>

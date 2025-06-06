@@ -96,6 +96,7 @@
 /* 회원가입 */
 .register-description,
 .edit-description {
+  margin-top: 20px;
   @include font-style(B3);
   color: color(light, 900);
 
