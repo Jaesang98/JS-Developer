@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import styles from '@/assets/styles/pages/auth.module.scss';
 import MainLayout from '@/components/layout/MainLayout';
 import Button from '@/components/ui/button';
@@ -6,6 +8,8 @@ import Input from '@/components/ui/input';
 import { useUserInfoStore } from '@/stores/useStore';
 
 function Mypage() {
+  // 데이터 흐름
+  const navigate = useNavigate();
   const { userInfo } = useUserInfoStore();
   return (
     <MainLayout>
@@ -29,7 +33,14 @@ function Mypage() {
           </div>
           <div className={`${styles['mypage-btn']} ${styles['divide']}`}>
             <Button variant="btn5" children={'연결 해제'} width={240}></Button>
-            <Button variant="btn5" children={'내 정보 변경'} width={240}></Button>
+            <Button
+              variant="btn5"
+              children={'비밀번호 변경'}
+              width={240}
+              onClick={async () => {
+                await navigate('/EditInfo');
+              }}
+            ></Button>
           </div>
           <div className={styles['mypage-btn']}>
             <div className={styles['mypage-delete']}>회원탈퇴</div>
