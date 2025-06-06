@@ -4,33 +4,39 @@
 
 /*푸터*/
 .footer {
-    background-color: color(light, 200);
-    border-top: 1px solid color(light, 400);
-    padding: 64px 252px 74px 252px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  background-color: color(light, 200);
+  border-top: 1px solid color(light, 400);
+  padding: 64px 252px 74px 252px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
-    :global(.dark-theme) & {
-        background-color: color(dark, 700);
-        border-top: 1px solid color(dark, 600);
-    }
+  :global(.dark-theme) & {
+    background-color: color(dark, 700);
+    border-top: 1px solid color(dark, 600);
+  }
 }
 
 .footer-title {
-    @include font-style(Main-body);
-    color: color(light, 900);
+  @include font-style(Main-body);
+  color: color(light, 900);
 
-    :global(.dark-theme) & {
-        color: color(dark, 200);
-    }
+  :global(.dark-theme) & {
+    color: color(dark, 200);
+  }
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .footer-item {
-    @include font-style(B4);
-    color: color(light, 800);
+  @include font-style(B4);
+  color: color(light, 800);
 
-    :global(.dark-theme) & {
-        color: color(dark, 300);
-    }
+  :global(.dark-theme) & {
+    color: color(dark, 300);
+  }
 }

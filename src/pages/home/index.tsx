@@ -11,14 +11,14 @@ function Home() {
         <div className={styles['home-content']}>
           <div className={styles['home-title']}>JS-Developer</div>
           <div className={styles['home-subtitle']}>
-            HI! Though it looks quite polished in English, this is still a developer site with much room for
-            improvement.
+            Hi there! Welcome to JS-Develop. The title looks cool in English, but there's still a lot to fix. Please
+            look around and enjoy!
           </div>
           <div className={styles['home-hr']}></div>
           <div className={styles['home-btnWrap']}>
-            <Button variant={'btn2'} children={'시작하기'} onClick={() => navigate('/Guide')}></Button>
-            <Button variant={'btn3'} children={'개발 가이드'} onClick={() => navigate('/Guide')}></Button>
-            <Button variant={'btn3'} children={'개발 사전'} onClick={() => navigate('/Devx')}></Button>
+            <Button variant={'btn2'} children={'시작하기'} onClick={async () => await navigate('/Guide')}></Button>
+            <Button variant={'btn3'} children={'개발 가이드'} onClick={async () => await navigate('/Guide')}></Button>
+            <Button variant={'btn3'} children={'개발 사전'} onClick={async () => await navigate('/Devx')}></Button>
           </div>
         </div>
       </div>
