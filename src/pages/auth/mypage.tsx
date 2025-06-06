@@ -27,8 +27,11 @@ function Mypage() {
             <div className={styles['edit-description']}>연결된 계정</div>
             <Input defaultValue={userInfo.loginType} disabled={true}></Input>
           </div>
-          <div className={styles['mypage-btn']}>
+          <div className={`${styles['mypage-btn']} ${styles['divide']}`}>
             <Button variant="btn5" children={'연결 해제'} width={240}></Button>
+            <Button variant="btn5" children={'내 정보 변경'} width={240}></Button>
+          </div>
+          <div className={styles['mypage-btn']}>
             <div className={styles['mypage-delete']}>회원탈퇴</div>
           </div>
         </div>

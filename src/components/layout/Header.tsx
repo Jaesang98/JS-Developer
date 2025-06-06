@@ -45,9 +45,13 @@ function Header() {
           개발 사전
         </div>
         <div
-          className={`${styles['header-item']} ${userInfo.userId ? '' : styles.disabled}`}
+          className={styles['header-item']}
           onClick={async () => {
-            await navigate('/Mypage');
+            if (userInfo.userId == '') {
+              await navigate('/Register');
+            } else {
+              await navigate('/Mypage');
+            }
           }}
         >
           마이페이지

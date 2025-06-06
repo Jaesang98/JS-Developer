@@ -122,7 +122,7 @@ function Login() {
             <div
               className={styles['login-helpItem']}
               onClick={async () => {
-                await navigate('/Create');
+                await navigate('/Register');
               }}
             >
               회원가입
