@@ -1,36 +1,7 @@
-import axios from 'axios';
-import { useUserInfoStore } from '@/stores/useStore';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 function Home() {
-  const userStore = useUserInfoStore();
-  const [data, setdata] = useState<string>('');
-
-  const fetchServer = () => {
-    axios({
-      method: 'post',
-      url: 'https://jsonplaceholder.typicode.com/posts',
-      data: {
-        title: 'Article title',
-        body: 'Article body content',
-        userId: 1,
-      },
-    })
-      .then((response) => {
-        setdata(response.data.userId);
-        userStore.setUser({
-          userId: response.data.userId,
-          userName: '남재상',
-          adminYn: 'Y',
-        });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
   const navigate = useNavigate();
 
   const pageOpen = () => {
@@ -52,8 +23,6 @@ function Home() {
 
   return (
     <>
-      <button onClick={fetchServer}>서버통신</button>
-      <div>zuntand 테스트값: {JSON.stringify(userStore.userInfo)}</div>
       <div className="test">*React JSX에서는 객체나 배열을 직접 출력할 수 없기 때문에, 문자열로 변환*</div>
       <br></br>
       <button onClick={pageOpen}>라우터 이동테스트1</button>
@@ -70,7 +39,6 @@ function Home() {
       </button>
       <h2>다국어 처리 (선택된 다국어: {i18n.language})</h2>
       <h3>{t('Test')} </h3>
-      {data}
     </>
   );
 }

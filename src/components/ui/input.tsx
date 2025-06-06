@@ -6,7 +6,7 @@ interface InputProps {
   width?: number;
   placeholder?: string;
   disabled?: boolean;
-  type?;
+  type?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
