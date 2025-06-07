@@ -1,9 +1,48 @@
+import { useEffect, useState } from 'react';
+
 import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/guide.module.scss';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 
+import { MenuItem } from '@/type/guide/menu';
+
+import { useGuideMenuQuery } from '@/queries/guide/useMenuQuery';
+
 function Guide() {
+  // 데이터 흐름
+  // const navigate = useNavigate();
+  // const { setUser } = useUserInfoStore();
+
+  //모달창 변수
+  // const [alertOpen, setAlertOpen] = useState(false);
+  // const [alertContent, setAlertContent] = useState('');
+
+  // 그 외 변수
+  const [menu1Click, setMenu1Click] = useState<number[]>([]); // 왼쪽 메뉴1클릭 (toggle용)
+  const [menu2Click, setMenu2Click] = useState<{ parentIndex: number; childIndex: number } | null>(null); // 왼쪽 메뉴2클릭 (toggle용)
+  const [menu3Click, setMenu3Click] = useState<number | null>(null); // 오른쪽 메뉴3클릭 (toggle용)
+  const [menu2ClickId, setMenu2ClickId] = useState('MENU_1_0001');
+
+  // 서버통신
+  const { data } = useGuideMenuQuery();
+  const [menuList, setMenuList] = useState<MenuItem[]>();
+  const [menuList2, setMenuList2] = useState<MenuItem>();
+
+  useEffect(() => {
+    if (data?.data) {
+      setMenuList(data.data);
+    }
+  }, [data?.data]);
+
+  useEffect(() => {
+    if (menuList) {
+      const foundMenu2 = menuList.flatMap((item) => item.children).find((child) => child.menuId === menu2ClickId);
+      setMenuList2(foundMenu2);
+      setMenu3Click(0);
+    }
+  }, [menuList, menu2ClickId]);
+
   return (
     <MainLayout>
       <div className={styles['guide-contentWrap']}>
@@ -17,23 +56,47 @@ function Guide() {
             <Input variant="input1" width={290} placeholder={'Search'}></Input>
 
             <div className={styles['guide-meun']}>
-              <div className={styles['guide-meunlist']}>
-                <div className={`${styles['guide-meunItem']} ${styles['active']}`}>API</div>
-                <ul className={styles['guide-submenuList']}>
-                  <li className={`${styles['guide-submenuItem']} ${styles['active']}`}>
-                    호버 시 텍스트 색상 Primary로 변경
-                  </li>
-                  <li className={styles['guide-submenuItem']}>구글 API 사용</li>
-                </ul>
-              </div>
+              {menuList?.map((menuItem1: MenuItem, index1: number) => (
+                <div className={styles['guide-meunlist']} key={index1}>
+                  <div
+                    className={`${styles['guide-meunItem']} ${menu1Click.includes(index1) ? styles['active'] : ''}`}
+                    onClick={() => {
+                      const indexList = [...menu1Click];
+                      const found = indexList.indexOf(index1);
 
-              <div className={styles['guide-meunlist']}>
-                <div className={`${styles['guide-meunItem']}`}>API</div>
-              </div>
+                      if (found > -1) {
+                        indexList.splice(found, 1);
+                      } else {
+                        indexList.push(index1);
+                      }
 
-              <div className={styles['guide-meunlist']}>
-                <div className={`${styles['guide-meunItem']}`}>API</div>
-              </div>
+                      setMenu1Click(indexList);
+                    }}
+                  >
+                    {menuItem1.menuName}
+                  </div>
+                  {menu1Click.includes(index1) && (
+                    <ul className={styles['guide-submenuList']}>
+                      {menuItem1?.children.map((menuItem2: MenuItem, index2: number) => (
+                        <li
+                          key={index2}
+                          className={`${styles['guide-submenuItem']} ${
+                            menu2Click?.parentIndex === index1 && menu2Click?.childIndex === index2
+                              ? styles['active']
+                              : ''
+                          }`}
+                          onClick={() => {
+                            setMenu2Click({ parentIndex: index1, childIndex: index2 });
+                            setMenu2ClickId(menuItem2.menuId);
+                          }}
+                        >
+                          {menuItem2.menuName}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -76,14 +139,28 @@ function Guide() {
 
           {/* 오른쪽 사이드바 */}
           <div className={styles['guide-rightside']}>
-            <div className={styles['guide-ctg']}>
-              <div className={styles['guide-ctgtitle']}>네이버 MAP</div>
-              <ul className={styles['guide-ctglist']}>
-                <li className={`${styles['guide-ctgitem']} ${styles['active']}`}>네이버 MAP API사용1</li>
-                <li className={styles['guide-ctgitem']}>네이버 MAP API사용2</li>
-                <li className={styles['guide-ctgitem']}>네이버 MAP API사용3</li>
-              </ul>
-            </div>
+            {
+              <div className={styles['guide-ctg']}>
+                <div className={styles['guide-ctgtitle']}>{menuList2?.menuName}</div>
+                <ul className={styles['guide-ctglist']}>
+                  {menuList2?.children.map((item, index) => (
+                    <li
+                      className={`${styles['guide-ctgitem']} ${menu3Click === index ? styles['active'] : ''}`}
+                      onClick={() => {
+                        if (menu3Click === index) {
+                          setMenu3Click(null);
+                        } else {
+                          setMenu3Click(index);
+                        }
+                      }}
+                      key={index}
+                    >
+                      {item.menuName}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            }
           </div>
         </div>
       </div>
