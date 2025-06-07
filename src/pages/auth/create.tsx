@@ -18,8 +18,8 @@ function Create() {
   const { setUser } = useUserInfoStore();
 
   //모달창 변수
-  const [alerOpen, setAlertOpen] = useState(false);
-  const [alerContent, setAlerContent] = useState('');
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertContent, setAlertContent] = useState('');
 
   // 그 외 변수
   const [userId, setUserId] = useState('');
@@ -36,13 +36,13 @@ function Create() {
   const validation = async () => {
     if (!checkUserId) {
       setAlertOpen(true);
-      setAlerContent('아이디 중복 확인을 해주세요.');
+      setAlertContent('아이디 중복 확인을 해주세요.');
     } else if (passWord != confirmPassword) {
       setAlertOpen(true);
-      setAlerContent('비밀번호가 서로 일치하지 않습니다.');
+      setAlertContent('비밀번호가 서로 일치하지 않습니다.');
     } else if (!regex.test(passWord)) {
       setAlertOpen(true);
-      setAlerContent('비밀번호는 영문, 숫자, 특수문자를 포함해 10자 이상이어야 합니다.');
+      setAlertContent('비밀번호는 영문, 숫자, 특수문자를 포함해 10자 이상이어야 합니다.');
     } else {
       await SignUpJWT();
     }
@@ -58,14 +58,14 @@ function Create() {
         onSuccess: async (data) => {
           if (data) {
             setAlertOpen(true);
-            setAlerContent('회원가입 완료되었습니다.');
+            setAlertContent('회원가입 완료되었습니다.');
             setUser(data);
             setSignUpSuccess(true);
           }
         },
         onError: async () => {
           setAlertOpen(true);
-          setAlerContent('회원가입이 실패했습니다.');
+          setAlertContent('회원가입이 실패했습니다.');
         },
       },
     );
@@ -73,7 +73,7 @@ function Create() {
 
   return (
     <MainLayout>
-      {alerOpen && (
+      {alertOpen && (
         <BaseModal onClose={() => setAlertOpen(false)}>
           <AlertModal
             onClose={async () => {
@@ -83,7 +83,7 @@ function Create() {
                 setAlertOpen(false);
               }
             }}
-            content={alerContent}
+            content={alertContent}
           />
         </BaseModal>
       )}
@@ -116,7 +116,7 @@ function Create() {
                   setCheckUserId(true);
                 } else {
                   setAlertOpen(true);
-                  setAlerContent('아이디 중복체크를 해주세요');
+                  setAlertContent('아이디를 작성해주세요.');
                 }
               }}
             ></Button>

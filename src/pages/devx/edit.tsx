@@ -19,8 +19,8 @@ function DevxEdit() {
   const dictData = useLocation().state?.data;
 
   // 모달창 변수
-  const [alerOpen, setAlertOpen] = useState(false);
-  const [alerContent, setAlerContent] = useState('');
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertContent, setAlertContent] = useState('');
   const [alertType, setAlertType] = useState(false);
   // const [open, setOpen] = useState(false);
 
@@ -38,7 +38,7 @@ function DevxEdit() {
     const result = await refetch();
     if (result.data.result == false) {
       setAlertOpen(true);
-      setAlerContent('중복되는 단어가 존재합니다');
+      setAlertContent('중복되는 단어가 존재합니다');
       setValidate(false);
     } else {
       setAlertOpen(false);
@@ -55,18 +55,18 @@ function DevxEdit() {
         },
         {
           onSuccess: async () => {
-            setAlerContent('저장되었습니다.');
+            setAlertContent('저장되었습니다.');
             setAlertOpen(true);
             setAlertType(true);
           },
           onError: async () => {
-            setAlerContent('등록 중 오류가 발생했습니다.');
+            setAlertContent('등록 중 오류가 발생했습니다.');
             setAlertOpen(true);
           },
         },
       );
     } else {
-      setAlerContent('중복확인을 해주세요.');
+      setAlertContent('중복확인을 해주세요.');
       setAlertOpen(true);
     }
   };
@@ -81,18 +81,18 @@ function DevxEdit() {
         },
         {
           onSuccess: async () => {
-            setAlerContent('수정되었습니다.');
+            setAlertContent('수정되었습니다.');
             setAlertOpen(true);
             setAlertType(true);
           },
           onError: async () => {
-            setAlerContent('수정 중 오류가 발생했습니다.');
+            setAlertContent('수정 중 오류가 발생했습니다.');
             setAlertOpen(true);
           },
         },
       );
     } else {
-      setAlerContent('중복확인을 해주세요.');
+      setAlertContent('중복확인을 해주세요.');
       setAlertOpen(true);
     }
   };
@@ -108,7 +108,7 @@ function DevxEdit() {
     <MainLayout>
       <div className={styles['devx-contentWrap']}>
         {/* 기본 alert모달창 */}
-        {alerOpen && (
+        {alertOpen && (
           <BaseModal onClose={() => setAlertOpen(false)}>
             <AlertModal
               onClose={async () => {
@@ -118,7 +118,7 @@ function DevxEdit() {
                   await navigate(-1);
                 }
               }}
-              content={alerContent}
+              content={alertContent}
             />
             {/* <ConfirmModal
               cancelLabel={'취소'}

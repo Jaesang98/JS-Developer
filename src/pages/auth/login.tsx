@@ -18,8 +18,8 @@ function Login() {
   const { setUser } = useUserInfoStore();
 
   //모달창 변수
-  const [alerOpen, setAlertOpen] = useState(false);
-  const [alerContent, setAlerContent] = useState('');
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertContent, setAlertContent] = useState('');
 
   // 그 외 변수
   const [userId, setUserId] = useState('');
@@ -31,7 +31,7 @@ function Login() {
   const validation = async () => {
     if (userId == '' || passWord == '') {
       setAlertOpen(true);
-      setAlerContent('아이디 또는 비밀번호를 확인해주세요.');
+      setAlertContent('아이디 또는 비밀번호를 확인해주세요.');
     } else {
       await loginJWT();
     }
@@ -52,7 +52,7 @@ function Login() {
         },
         onError: async () => {
           setAlertOpen(true);
-          setAlerContent('아이디 또는 비밀번호가 틀렸습니다');
+          setAlertContent('아이디 또는 비밀번호가 틀렸습니다');
         },
       },
     );
@@ -60,13 +60,13 @@ function Login() {
 
   return (
     <MainLayout>
-      {alerOpen && (
+      {alertOpen && (
         <BaseModal onClose={() => setAlertOpen(false)}>
           <AlertModal
             onClose={async () => {
               setAlertOpen(false);
             }}
-            content={alerContent}
+            content={alertContent}
           />
         </BaseModal>
       )}
