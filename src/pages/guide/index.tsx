@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/guide.module.scss';
@@ -6,13 +6,15 @@ import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 
 import { MenuItem } from '@/type/guide/menu';
+import { GuideItem } from '@/type/guide/list';
 
 import { useGuideMenuQuery } from '@/queries/guide/useMenuQuery';
+import { useGuideListQuery } from '@/queries/guide/useListQuery';
 
 function Guide() {
   // 데이터 흐름
   // const navigate = useNavigate();
-  // const { setUser } = useUserInfoStore();
+  const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   //모달창 변수
   // const [alertOpen, setAlertOpen] = useState(false);
@@ -22,18 +24,43 @@ function Guide() {
   const [menu1Click, setMenu1Click] = useState<number[]>([]); // 왼쪽 메뉴1클릭 (toggle용)
   const [menu2Click, setMenu2Click] = useState<{ parentIndex: number; childIndex: number } | null>(null); // 왼쪽 메뉴2클릭 (toggle용)
   const [menu3Click, setMenu3Click] = useState<number | null>(null); // 오른쪽 메뉴3클릭 (toggle용)
-  const [menu2ClickId, setMenu2ClickId] = useState('MENU_1_0001');
+  const [menu2ClickId, setMenu2ClickId] = useState<string>('');
+  const [menu2ClickName, setMenu2ClickName] = useState<string>('');
+  // const [menu3ClickId, setMenu3ClickId] = useState<string>('');
 
   // 서버통신
-  const { data } = useGuideMenuQuery();
+  const { data: menuData } = useGuideMenuQuery();
+  const { data: listData } = useGuideListQuery(menu2ClickId, {
+    enabled: !!menu2ClickId,
+  });
+
   const [menuList, setMenuList] = useState<MenuItem[]>();
   const [menuList2, setMenuList2] = useState<MenuItem>();
 
   useEffect(() => {
-    if (data?.data) {
-      setMenuList(data.data);
+    if (menuData?.data) {
+      setMenuList(menuData.data);
+
+      // 1Depth 모두 펼치기
+      const allMenu1Indexes = menuData.data.map((_, index: number) => index);
+      setMenu1Click(allMenu1Indexes);
+
+      // 기본 2Depth 선택: 첫 번째 1Depth의 첫 번째 자식
+      const firstMenu2 = menuData.data[0]?.children[0];
+      if (firstMenu2) {
+        setMenu2Click({ parentIndex: 0, childIndex: 0 });
+        setMenu2ClickId(firstMenu2.menuId);
+        setMenu2ClickName(firstMenu2.menuName);
+
+        // 오른쪽 3Depth 첫 번째 항목도 선택
+        const firstMenu3 = firstMenu2.children?.[0];
+        if (firstMenu3) {
+          setMenu3Click(0);
+          // setMenu3ClickId(firstMenu3.menuId);
+        }
+      }
     }
-  }, [data?.data]);
+  }, [menuData?.data]);
 
   useEffect(() => {
     if (menuList) {
@@ -42,6 +69,42 @@ function Guide() {
       setMenu3Click(0);
     }
   }, [menuList, menu2ClickId]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!listData?.data) return;
+
+      const scrollY = window.scrollY;
+      const offset = 100;
+
+      for (let i = 0; i < listData.data.length; i++) {
+        const item = listData.data[i];
+        const el = itemRefs.current[item.menuId];
+        if (!el) continue;
+
+        const top = el.offsetTop - offset;
+        const bottom = top + el.offsetHeight;
+
+        if (scrollY >= top && scrollY < bottom) {
+          setMenu3Click(i);
+          // setMenu3ClickId(item.menuId);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [listData]);
+
+  const scrollToId = (id: string) => {
+    const target = itemRefs.current[id];
+    if (target) {
+      const offset = 50;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
 
   return (
     <MainLayout>
@@ -88,6 +151,7 @@ function Guide() {
                           onClick={() => {
                             setMenu2Click({ parentIndex: index1, childIndex: index2 });
                             setMenu2ClickId(menuItem2.menuId);
+                            setMenu2ClickName(menuItem2.menuName);
                           }}
                         >
                           {menuItem2.menuName}
@@ -102,39 +166,35 @@ function Guide() {
 
           {/* 센터 */}
           <div className={styles['guide-center']}>
-            <div className={styles['guide-title']}>네이버 API 사용</div>
+            <div className={styles['guide-title']}>{menu2ClickName}</div>
             <hr className={styles['divider-56']}></hr>
-            <div className={styles['guide-content']}>
-              <div className={styles['guide-descBlock']}>
-                <div className={styles['guide-subTitle']}>1. 네이버 MAP</div>
-                <div className={styles['guide-description']}>
-                  위에서 src경로에 이미지 파일이 있을 때는 상대경로로 지정하는 것이 안 되어서 두 가지 예시 방법을
-                  사용했다면,public에 있을 때는 다르다. 하지만, <code>&lt;header&gt;</code> 태그는 허용되지 않는 자손
-                  요소와 허용되지 않는 조상 요소가 있습니다. 이러한 규칙들은 <code>&lt;header&gt;</code> 태그가 특정
-                  상황에서 사용될 경우 웹 페이지의 콘텐츠를 파악하는데 어려움이 발생할 수 있기 때문에 생긴 것으로서,{' '}
-                  <code>&lt;header&gt;</code> 태그를 사용할 때 반드시 고려해야 합니다.
+            {listData?.data.map((item: GuideItem, index: number) => (
+              <div className={styles['guide-content']} key={index} ref={(el) => (itemRefs.current[item.menuId] = el)}>
+                <div className={styles['guide-descBlock']}>
+                  <div className={styles['guide-subTitle']}>{item.menuName}</div>
+                  <div className={styles['guide-description']}>{item.menuDescription}</div>
                 </div>
-              </div>
-              <div className={styles['guide-img']}></div>
+                <div className={styles['guide-img']}></div>
 
-              <div className={styles['guide-tab']}>
-                {/* tab */}
-                <ul className={styles['guide-tablist']}>
-                  <li className={`${styles['guide-tabitem']} ${styles['active']}`}>Vue</li>
-                  <li className={styles['guide-tabitem']}>React</li>
-                </ul>
+                <div className={styles['guide-tab']}>
+                  {/* tab */}
+                  <ul className={styles['guide-tablist']}>
+                    <li className={`${styles['guide-tabitem']} ${styles['active']}`}>Vue</li>
+                    <li className={styles['guide-tabitem']}>React</li>
+                  </ul>
 
-                {/* tab contents */}
-                <div className={styles['guide-codeBlock']}>
-                  <div className={styles['guide-img']}></div>
+                  {/* tab contents */}
+                  <div className={styles['guide-codeBlock']}>
+                    <div className={styles['guide-img']}></div>
+                  </div>
                 </div>
+                <div className={styles['guide-btnblock']}>
+                  <Button variant="btn4" children={'카테고리 삭제'}></Button>
+                  <Button variant="btn5" children={'카테고리 수정'}></Button>
+                </div>
+                <hr className={styles['divider-56']}></hr>
               </div>
-              <div className={styles['guide-btnblock']}>
-                <Button variant="btn4" children={'카테고리 삭제'}></Button>
-                <Button variant="btn5" children={'카테고리 수정'}></Button>
-              </div>
-              <hr className={styles['divider-56']}></hr>
-            </div>
+            ))}
           </div>
 
           {/* 오른쪽 사이드바 */}
@@ -152,6 +212,8 @@ function Guide() {
                         } else {
                           setMenu3Click(index);
                         }
+                        // setMenu3ClickId(item.menuId);
+                        scrollToId(item.menuId);
                       }}
                       key={index}
                     >
