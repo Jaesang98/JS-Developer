@@ -2,17 +2,18 @@ import { useState } from 'react';
 import styles from '@/assets/styles/components/ui/select.module.scss';
 
 interface OptionType {
-  id: number;
-  name: string | number;
+  id: string;
+  name: string;
 }
 
 interface SelectProps {
   option: OptionType[];
   defalut: string;
   disabled?: boolean;
+  onChange?: (item: OptionType) => void;
 }
 
-const SelectBox: React.FC<SelectProps> = ({ option, defalut, disabled = false }) => {
+const SelectBox: React.FC<SelectProps> = ({ option, defalut, disabled = false, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<OptionType>();
 
@@ -23,6 +24,7 @@ const SelectBox: React.FC<SelectProps> = ({ option, defalut, disabled = false })
   const handleSelect = (item: OptionType) => {
     setSelected(item);
     setIsOpen(false);
+    onChange?.(item);
   };
 
   return (
