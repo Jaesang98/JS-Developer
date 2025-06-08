@@ -43,7 +43,7 @@ function Guide() {
       setMenuList(menuData.data);
 
       // 1Depth 모두 펼치기
-      const allMenu1Indexes = menuData.data.map((_, index: number) => index);
+      const allMenu1Indexes = menuData.data.map((_: MenuItem, index: number) => index);
       setMenu1Click(allMenu1Indexes);
 
       // 기본 2Depth 선택: 첫 번째 1Depth의 첫 번째 자식

@@ -1,13 +1,20 @@
+import { useState } from 'react';
+
 import styles from '@/assets/styles/pages/guide.module.scss';
 import Button from '@/components/ui/button';
 import SelectBox from '@/components/ui/select';
 
+interface OptionType {
+  id: string;
+  name: string;
+}
+
 function AddCode() {
-  const testOption = [
-    { id: 1, name: '이미지' },
-    { id: 1, name: 'GIF' },
-    { id: 1, name: 'IFrame' },
-  ];
+  const [testOption] = useState<OptionType[]>([
+    { id: '1', name: '이미지' },
+    { id: '1', name: 'GIF' },
+    { id: '1', name: 'IFrame' },
+  ]);
   return (
     <div className={styles['image-contentWrap']}>
       <div className={`${styles['meun-title']} required`}>3. 코드</div>

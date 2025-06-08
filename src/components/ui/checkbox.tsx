@@ -2,7 +2,7 @@ import styles from '@/assets/styles/components/ui/checkbox.module.scss';
 
 interface CheckboxProps {
   label: string;
-  checked: boolean;
+  checked?: boolean;
   disabled?: boolean;
   onChange?: (checked: boolean) => void;
 }
