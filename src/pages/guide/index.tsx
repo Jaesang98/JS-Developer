@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/guide.module.scss';
@@ -13,7 +14,7 @@ import { useGuideListQuery } from '@/queries/guide/useListQuery';
 
 function Guide() {
   // 데이터 흐름
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   //모달창 변수
@@ -112,7 +113,13 @@ function Guide() {
         <div className={styles['guide-block']}>
           {/* 왼쪽 사이드바 */}
           <div className={styles['guide-leftside']}>
-            <Button variant="btn6" children={'작성하기'}></Button>
+            <Button
+              variant="btn6"
+              children={'작성하기'}
+              onClick={async () => {
+                await navigate('/FirstPage');
+              }}
+            ></Button>
 
             <hr className={styles['divider-28']}></hr>
 

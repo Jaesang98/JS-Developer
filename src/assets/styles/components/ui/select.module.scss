@@ -3,25 +3,37 @@
 @use '/src/assets/styles/abstracts/function' as *;
 
 .select1 {
-    min-width: 320px;
-    background-color: color(main, white);
-    color: color(light, 900);
-    border: 1px solid color(light, 500);
-    border-radius: 8px;
-    padding: 16px 20px;
-    position: relative;
-    overflow: visible;
-    cursor: pointer;
+  min-width: 320px;
+  background-color: color(main, white);
+  color: color(light, 900);
+  border: 1px solid color(light, 500);
+  border-radius: 8px;
+  padding: 16px 20px;
+  position: relative;
+  overflow: visible;
+  cursor: pointer;
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
+
+  :global(.dark-theme) & {
+    background-color: transparent;
+    border: 1px solid color(dark, 500);
+    color: color(dark, 200);
+  }
+
+  &.disabled {
+    background-color: color(light, 100);
+    color: color(light, 600);
+    border: 1px solid color(light, 400);
 
     :global(.dark-theme) & {
-        background-color: transparent;
-        border: 1px solid color(dark, 500);
-        color: color(dark, 200);
+      background-color: color(dark, 700);
+      border: 1px solid color(dark, 600);
+      color: color(dark, 400);
     }
+  }
 }
 
 // .arrowDown,
@@ -36,53 +48,53 @@
 // }
 
 .arrowDown {
-    position: absolute;
-    right: 16px;
-    top: 20px;
-    width: 16px;
-    height: 10px;
-    background-image: url('../../../img/icon-down.svg');
+  position: absolute;
+  right: 16px;
+  top: 20px;
+  width: 16px;
+  height: 10px;
+  background-image: url('../../../img/icon-down.svg');
 }
 
 .arrowUp {
-    position: absolute;
-    right: 16px;
-    top: 20px;
-    width: 16px;
-    height: 10px;
-    background-image: url('../../../img/icon-up.svg');
+  position: absolute;
+  right: 16px;
+  top: 20px;
+  width: 16px;
+  height: 10px;
+  background-image: url('../../../img/icon-up.svg');
 }
 
 .optionList {
-    @include font-style(B4);
-    color: color(light, 900);
-    min-width: 320px;
-    border-radius: 8px;
-    border: 1px solid color(light, 500);
-    padding: 4px;
-    background-color: color(main, white);
-    margin-top: 5px;
+  @include font-style(B4);
+  color: color(light, 900);
+  min-width: 320px;
+  border-radius: 8px;
+  border: 1px solid color(light, 500);
+  padding: 4px;
+  background-color: color(main, white);
+  margin-top: 5px;
 
-    :global(.dark-theme) & {
-        color: color(dark, 200);
-        background-color: color(dark, 800);
-        border: 1px solid color(dark, 500);
-    }
+  :global(.dark-theme) & {
+    color: color(dark, 200);
+    background-color: color(dark, 800);
+    border: 1px solid color(dark, 500);
+  }
 }
 
 .optionItem {
-    padding-top: 12px;
-    padding-left: 16px;
-    padding-bottom: 12px;
-    cursor: pointer;
+  padding-top: 12px;
+  padding-left: 16px;
+  padding-bottom: 12px;
+  cursor: pointer;
 
+  &:hover {
+    background-color: color(light, 100);
+  }
+
+  :global(.dark-theme) & {
     &:hover {
-        background-color: color(light, 100);
+      background-color: color(dark, 900);
     }
-
-    :global(.dark-theme) & {
-        &:hover {
-            background-color: color(dark, 900);
-        }
-    }
+  }
 }
