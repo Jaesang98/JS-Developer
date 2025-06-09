@@ -17,17 +17,12 @@ function Guide() {
   const navigate = useNavigate();
   const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
-  //모달창 변수
-  // const [alertOpen, setAlertOpen] = useState(false);
-  // const [alertContent, setAlertContent] = useState('');
-
   // 그 외 변수
   const [menu1Click, setMenu1Click] = useState<number[]>([]); // 왼쪽 메뉴1클릭 (toggle용)
   const [menu2Click, setMenu2Click] = useState<{ parentIndex: number; childIndex: number } | null>(null); // 왼쪽 메뉴2클릭 (toggle용)
   const [menu3Click, setMenu3Click] = useState<number | null>(null); // 오른쪽 메뉴3클릭 (toggle용)
   const [menu2ClickId, setMenu2ClickId] = useState<string>('');
   const [menu2ClickName, setMenu2ClickName] = useState<string>('');
-  // const [menu3ClickId, setMenu3ClickId] = useState<string>('');
 
   // 서버통신
   const { data: menuData } = useGuideMenuQuery();
@@ -38,6 +33,7 @@ function Guide() {
   const [menuList, setMenuList] = useState<MenuItem[]>();
   const [menuList2, setMenuList2] = useState<MenuItem>();
 
+  // 첫 화면 진입 시 메뉴 전부 펼쳐짐
   useEffect(() => {
     if (menuData?.data) {
       setMenuList(menuData.data);
@@ -57,12 +53,12 @@ function Guide() {
         const firstMenu3 = firstMenu2.children?.[0];
         if (firstMenu3) {
           setMenu3Click(0);
-          // setMenu3ClickId(firstMenu3.menuId);
         }
       }
     }
   }, [menuData?.data]);
 
+  // 2Depth 클릭 할 때 마다 화면 렌더링
   useEffect(() => {
     if (menuList) {
       const foundMenu2 = menuList.flatMap((item) => item.children).find((child) => child.menuId === menu2ClickId);
@@ -71,6 +67,7 @@ function Guide() {
     }
   }, [menuList, menu2ClickId]);
 
+  // 스크롤 할 때 마다 3Depth 위치 표현
   useEffect(() => {
     const handleScroll = () => {
       if (!listData?.data) return;
@@ -88,7 +85,6 @@ function Guide() {
 
         if (scrollY >= top && scrollY < bottom) {
           setMenu3Click(i);
-          // setMenu3ClickId(item.menuId);
           break;
         }
       }
@@ -98,10 +94,12 @@ function Guide() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [listData]);
 
+  // 3Depth클릭 시 스크롤 이동
   const scrollToId = (id: string) => {
     const target = itemRefs.current[id];
     if (target) {
       const offset = 50;
+      // 뷰포트 기준 getBoundingClientRect사용
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
@@ -132,11 +130,15 @@ function Guide() {
                     className={`${styles['guide-meunItem']} ${menu1Click.includes(index1) ? styles['active'] : ''}`}
                     onClick={() => {
                       const indexList = [...menu1Click];
+                      // 있으면 인덱스 반환
                       const found = indexList.indexOf(index1);
 
+                      // 인덱스 있으면 삭제
                       if (found > -1) {
                         indexList.splice(found, 1);
-                      } else {
+                      }
+                      // 없으면 넣기
+                      else {
                         indexList.push(index1);
                       }
 
@@ -151,6 +153,7 @@ function Guide() {
                         <li
                           key={index2}
                           className={`${styles['guide-submenuItem']} ${
+                            // 부모 자식 인덱스를 확인
                             menu2Click?.parentIndex === index1 && menu2Click?.childIndex === index2
                               ? styles['active']
                               : ''
@@ -219,7 +222,6 @@ function Guide() {
                         } else {
                           setMenu3Click(index);
                         }
-                        // setMenu3ClickId(item.menuId);
                         scrollToId(item.menuId);
                       }}
                       key={index}
