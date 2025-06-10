@@ -5,9 +5,10 @@ import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/guide.module.scss';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
+import MDEditor from '@uiw/react-md-editor';
 
 import { MenuItem } from '@/type/guide/menu';
-import { GuideItem } from '@/type/guide/list';
+import { GuideItem, Code } from '@/type/guide/list';
 
 import { useGuideMenuQuery } from '@/queries/guide/useMenuQuery';
 import { useGuideListQuery } from '@/queries/guide/useListQuery';
@@ -23,6 +24,7 @@ function Guide() {
   const [menu3Click, setMenu3Click] = useState<number | null>(null); // 오른쪽 메뉴3클릭 (toggle용)
   const [menu2ClickId, setMenu2ClickId] = useState<string>('');
   const [menu2ClickName, setMenu2ClickName] = useState<string>('');
+  const [tabClick, setTabClick] = useState<{ menuIndex: number; tabIndex: number }[] | null>([]);
 
   // 서버통신
   const { data: menuData } = useGuideMenuQuery();
@@ -105,6 +107,17 @@ function Guide() {
     }
   };
 
+  // 탭 구분하기
+  useEffect(() => {
+    if (listData?.data) {
+      const tabIndex = listData.data.map((_: GuideItem, index: number) => ({
+        menuIndex: index,
+        tabIndex: 0,
+      }));
+      setTabClick(tabIndex);
+    }
+  }, [listData]);
+
   return (
     <MainLayout>
       <div className={styles['guide-contentWrap']}>
@@ -184,23 +197,81 @@ function Guide() {
                   <div className={styles['guide-subTitle']}>{item.menuName}</div>
                   <div className={styles['guide-description']}>{item.menuDescription}</div>
                 </div>
-                <div className={styles['guide-img']}></div>
+                {/* <div className={styles['guide-img']}> */}
+                <img
+                  className={styles['guide-img']}
+                  src={item.imageUrl || item.gifUrl || item.iframeUrl}
+                  alt="이미지"
+                ></img>
+                {/* </div> */}
 
                 <div className={styles['guide-tab']}>
                   {/* tab */}
                   <ul className={styles['guide-tablist']}>
-                    <li className={`${styles['guide-tabitem']} ${styles['active']}`}>Vue</li>
-                    <li className={styles['guide-tabitem']}>React</li>
+                    {item.code.map((item: Code, codeIndex) => (
+                      <li
+                        key={codeIndex}
+                        className={`${styles['guide-tabitem']} ${
+                          tabClick?.[index]?.menuIndex === index && tabClick?.[index]?.tabIndex === codeIndex
+                            ? styles['active']
+                            : ''
+                        }`}
+                        onClick={() => {
+                          const tabIndex = [...(tabClick || [])];
+                          tabIndex[index] = { menuIndex: index, tabIndex: codeIndex };
+                          setTabClick(tabIndex);
+                        }}
+                      >
+                        {item.frameworkName}
+                      </li>
+                    ))}
                   </ul>
 
                   {/* tab contents */}
                   <div className={styles['guide-codeBlock']}>
-                    <div className={styles['guide-img']}></div>
+                    <div className={styles['guide-img']}>
+                      <MDEditor.Markdown
+                        source={
+                          tabClick?.[index] !== undefined
+                            ? item?.code[tabClick[index].tabIndex]?.code
+                            : item?.code[0]?.code
+                        }
+                        style={{ whiteSpace: 'pre-wrap', padding: '1.5rem', minHeight: 320 }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles['guide-descBlock']}>
+                  <div className={styles['guide-description']}>
+                    {tabClick?.[index] !== undefined
+                      ? item?.code[tabClick[index].tabIndex]?.codeDescription
+                      : item?.code[0]?.codeDescription}
+                    {/* <MDEditor.Markdown
+                      source={
+                        tabClick?.[index] !== undefined
+                          ? item?.code[tabClick[index].tabIndex]?.codeDescription
+                          : item?.code[0]?.codeDescription
+                      }
+                      style={{ whiteSpace: 'pre-wrap', padding: '1.5rem', minHeight: 320 }}
+                    /> */}
                   </div>
                 </div>
                 <div className={styles['guide-btnblock']}>
-                  <Button variant="btn4" children={'카테고리 삭제'}></Button>
-                  <Button variant="btn5" children={'카테고리 수정'}></Button>
+                  <Button
+                    variant="btn4"
+                    children={'카테고리 삭제'}
+                    onClick={async () => {
+                      console.log(item);
+                    }}
+                  ></Button>
+                  <Button
+                    variant="btn5"
+                    children={'카테고리 수정'}
+                    onClick={async () => {
+                      await navigate('/SecondPage');
+                    }}
+                  ></Button>
                 </div>
                 <hr className={styles['divider-56']}></hr>
               </div>

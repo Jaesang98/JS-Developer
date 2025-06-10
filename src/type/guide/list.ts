@@ -9,7 +9,13 @@ export interface GuideItem {
   imageUrl: string;
   gifUrl: string;
   iframeUrl: string;
-  frameworkName: string;
-  codeDescription: string;
   menuDescription: string;
+  code: Code[];
+}
+
+export interface Code {
+  codeDescription: string;
+  code: string;
+  frameworkName: string;
+  frameworkId: string;
 }
