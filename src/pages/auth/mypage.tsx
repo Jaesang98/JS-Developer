@@ -17,6 +17,8 @@ function Mypage() {
   const navigate = useNavigate();
   const { userInfo, logout } = useUserInfoStore();
 
+  console.log(userInfo);
+
   //모달창 변수
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertContent, setAlertContent] = useState('');

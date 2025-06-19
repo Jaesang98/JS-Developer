@@ -60,14 +60,15 @@ function Register_JWT() {
     signUpJWTMutation.mutate(
       {
         email: email,
-        passWord: passWord || '',
+        name: name,
+        phone: phone,
+        password: passWord,
       },
       {
         onSuccess: async (data) => {
           if (data) {
             setAlertOpen(true);
-            setAlertContent('회원가입 완료되었습니다.');
-            setUser(data);
+            setAlertContent('회원가입 완료되었습니다. 다시 로그인해주세요');
             setSignUpSuccess(true);
           }
         },

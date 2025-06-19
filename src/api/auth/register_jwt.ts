@@ -1,12 +1,14 @@
 import instance from '@/api/axiosInstance';
 
-export const fetchPostSignUpJWT = async (userId: string, passWord: string) => {
+export const fetchPostSignUpJWT = async (email: string, name: string, phone: string, password: string) => {
   const response = await instance({
     method: 'POST',
-    url: 'member/sign-up',
+    url: 'member/register',
     data: {
-      userId: userId,
-      passWord: passWord,
+      email: email,
+      name: name,
+      phone: phone,
+      password: password,
     },
   });
   return response.data;
