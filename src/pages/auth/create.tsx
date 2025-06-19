@@ -8,7 +8,7 @@ import Input from '@/components/ui/input';
 import BaseModal from '@/components/ui/modal/BaseModal';
 import AlertModal from '@/components/ui/modal/AlertModal';
 
-import { useAuthDuplicateQuery } from '@/queries/auth/useAuthCheckIdQuery';
+import { useAuthCheckIdQuery } from '@/queries/auth/useAuthCheckIdQuery';
 import { useSignUpJWTMutation } from '@/queries/auth/useSignUpJWTMutation';
 import { useUserInfoStore } from '@/stores/useStore';
 
@@ -22,19 +22,19 @@ function Create() {
   const [alertContent, setAlertContent] = useState('');
 
   // 그 외 변수
-  const [userId, setUserId] = useState('');
-  const [checkUserId, setCheckUserId] = useState(false);
+  const [email, setEmail] = useState('');
+  const [checkEmail, setCheckEmail] = useState(false);
   const [passWord, setpassWord] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const regex = /^(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{10,}$/;
 
   //서버 통신
-  const { isError, refetch } = useAuthDuplicateQuery(userId);
+  const { isError, refetch } = useAuthCheckIdQuery(email);
   const signUpJWTMutation = useSignUpJWTMutation();
   const [signUpSuccess, setSignUpSuccess] = useState(false);
 
   const validation = async () => {
-    if (!checkUserId) {
+    if (!checkEmail) {
       setAlertOpen(true);
       setAlertContent('아이디 중복 확인을 해주세요.');
     } else if (passWord != confirmPassword) {
@@ -51,7 +51,7 @@ function Create() {
   const SignUpJWT = async () => {
     signUpJWTMutation.mutate(
       {
-        userId: userId,
+        email: email,
         passWord: passWord || '',
       },
       {
@@ -97,12 +97,12 @@ function Create() {
             <Input
               placeholder={'아이디'}
               onChange={(e) => {
-                setUserId(e.target.value);
+                setEmail(e.target.value);
               }}
               onKeyDown={async (e) => {
                 if (e.key === 'Enter') {
                   await refetch();
-                  setCheckUserId(true);
+                  setCheckEmail(true);
                 }
               }}
             ></Input>
@@ -111,16 +111,16 @@ function Create() {
               children={'중복 확인'}
               width={320}
               onClick={async () => {
-                if (userId != '') {
+                if (email != '') {
                   await refetch();
-                  setCheckUserId(true);
+                  setCheckEmail(true);
                 } else {
                   setAlertOpen(true);
                   setAlertContent('아이디를 작성해주세요.');
                 }
               }}
             ></Button>
-            {checkUserId &&
+            {checkEmail &&
               (!isError ? (
                 <div className="success">* 사용 가능한 아이디입니다.</div>
               ) : (
