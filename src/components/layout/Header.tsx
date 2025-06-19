@@ -47,7 +47,7 @@ function Header() {
         <div
           className={styles['header-item']}
           onClick={async () => {
-            if (userInfo.userId == '') {
+            if (userInfo.email == '') {
               await navigate('/Register');
             } else {
               await navigate('/Mypage');
@@ -62,9 +62,10 @@ function Header() {
         <div className={styles['header-switch']} onClick={toggleDarkMode}></div>
         <Button
           variant={'btn1'}
-          children={userInfo.userId == '' ? '로그인' : '로그아웃'}
+          children={userInfo.email == '' ? '로그인' : '로그아웃'}
           onClick={async () => {
-            if (userInfo.userId) {
+            console.log(userInfo.email);
+            if (userInfo.email) {
               logout();
               await navigate('/');
             } else {
