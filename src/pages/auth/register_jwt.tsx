@@ -10,12 +10,10 @@ import AlertModal from '@/components/ui/modal/AlertModal';
 
 import { useAuthCheckIdQuery } from '@/queries/auth/useAuthCheckIdQuery';
 import { useSignUpJWTMutation } from '@/queries/auth/useSignUpJWTMutation';
-import { useUserInfoStore } from '@/stores/useStore';
 
 function Register_JWT() {
   // 데이터 흐름
   const navigate = useNavigate();
-  const { setUser } = useUserInfoStore();
 
   //모달창 변수
   const [alertOpen, setAlertOpen] = useState(false);

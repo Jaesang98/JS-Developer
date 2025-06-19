@@ -28,7 +28,7 @@ function Mypage() {
   const withDraw = async () => {
     withDrawMutation.mutate(
       {
-        userId: userInfo.userId,
+        userId: userInfo.email,
       },
       {
         onSuccess: async () => {

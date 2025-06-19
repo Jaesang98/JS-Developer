@@ -15,7 +15,7 @@ import { useUserInfoStore } from '@/stores/useStore';
 function Login() {
   // 데이터 흐름
   const navigate = useNavigate();
-  const { emailCheck, savedEmail, saveEmail, userInfo, setUser } = useUserInfoStore();
+  const { emailCheck, savedEmail, saveEmail, setUser } = useUserInfoStore();
 
   //모달창 변수
   const [alertOpen, setAlertOpen] = useState(false);
