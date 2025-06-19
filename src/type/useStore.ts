@@ -1,15 +1,25 @@
 // 로그인 시 받는 사용자 정보
 export interface UserStore {
   userInfo: UserInfo;
-  logout: () => void;
   setUser: (user: UserInfo) => void;
-}
+  logout: () => void;
 
+  emailCheck: boolean;
+  savedEmail: string;
+  saveEmail: (save: boolean, email: string) => void;
+}
+// 사용자정보
 export type UserInfo = {
-  userId: string;
-  userName: string;
-  role: string;
+  email: string;
+  name: string;
+  phone: string;
   loginType: string;
+  profile: string;
+  providerId: string;
+  created: string;
+  updated: string;
+  deleteYn: string;
+  role: string;
 };
 
 // 다크모드

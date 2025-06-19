@@ -8,25 +8,62 @@ const useUserInfoStore = create<UserStore>()(
   persist(
     (set) => ({
       userInfo: {
-        userId: '',
-        userName: '',
-        role: '',
+        email: '',
+        name: '',
+        phone: '',
         loginType: '',
+        profile: '',
+        providerId: '',
+        created: '',
+        updated: '',
+        deleteYn: '',
+        role: '',
       },
 
-      setUser: (user: UserInfo) =>
-        set({
-          userInfo: user,
-        }),
+      setUser: (user: UserInfo) => set({ userInfo: user }),
+
+      emailCheck: false,
+      savedEmail: '',
+
+      saveEmail: (save: boolean, email: string) =>
+        set((state) => ({
+          userInfo: {
+            ...state.userInfo,
+            email: save ? email : '',
+          },
+          emailCheck: save,
+          savedEmail: save ? email : '',
+        })),
 
       logout: () =>
-        set({
-          userInfo: {
-            userId: '',
-            userName: '',
-            role: '',
-            loginType: '',
-          },
+        set((state) => {
+          if (state.emailCheck) {
+            return {
+              userInfo: {
+                ...state.userInfo,
+                email: state.savedEmail,
+              },
+              emailCheck: true,
+              savedEmail: state.savedEmail,
+            };
+          } else {
+            return {
+              userInfo: {
+                email: '',
+                name: '',
+                phone: '',
+                loginType: '',
+                profile: '',
+                providerId: '',
+                created: '',
+                updated: '',
+                deleteYn: '',
+                role: '',
+              },
+              emailCheck: false,
+              savedEmail: '',
+            };
+          }
         }),
     }),
     {

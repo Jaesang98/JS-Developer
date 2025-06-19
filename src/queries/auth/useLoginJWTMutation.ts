@@ -5,7 +5,7 @@ export const useLoginJWTMutation = () => {
   const queryClient = useQueryClient();
 
   const LoginJWTMutation = useMutation({
-    mutationFn: ({ userId, passWord }: { userId: string; passWord: string }) => fetchPostLoginJWT(userId, passWord),
+    mutationFn: ({ email, passWord }: { email: string; passWord: string }) => fetchPostLoginJWT(email, passWord),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['auth', 'login', 'jwt'] });
     },

@@ -4,69 +4,71 @@
 
 /*헤더*/
 .header {
-    background-color: color(light, header-bg);
-    width: 100%;
-    min-height: 64px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    padding: 16px 252px;
+  background-color: color(light, header-bg);
+  width: 100%;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 16px 252px;
 
-    :global(.dark-theme) & {
-        background-color: color(dark, header-bg);
-        color: color(dark, header-text);
-    }
+  :global(.dark-theme) & {
+    background-color: color(dark, header-bg);
+    color: color(dark, header-text);
+  }
 }
 
 .header-logo {
-    @include font-style(Main-body);
-    color: color(main, white);
-    cursor: pointer;
+  @include font-style(Main-body);
+  color: color(main, white);
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .header-list {
-    @include font-style(Btn-text-1);
-    color: color(main, white);
-    display: flex;
-    gap: 40px;
+  @include font-style(Btn-text-1);
+  color: color(main, white);
+  display: flex;
+  gap: 40px;
 
-    :global(.dark-theme) & {
-        color: color(dark, 100);
-    }
+  :global(.dark-theme) & {
+    color: color(dark, 100);
+  }
 }
 
 .header-item {
-    cursor: pointer;
+  cursor: pointer;
+  white-space: nowrap;
 
-    &.disabled {
-        @include font-style(Btn-text-2);
-        color: color(light, header-text);
-        cursor: default;
-        pointer-events: none;
-    }
+  &.disabled {
+    @include font-style(Btn-text-2);
+    color: color(light, header-text);
+    cursor: default;
+    pointer-events: none;
+  }
 
-    &:hover {
-        color: color(main, primary);
-        transition: color 0.1s ease-in-out;
-    }
+  &:hover {
+    color: color(main, primary);
+    transition: color 0.1s ease-in-out;
+  }
 }
 
 .header-control {
-    display: flex;
-    justify-self: end;
-    gap: 12px;
+  display: flex;
+  justify-self: end;
+  gap: 12px;
 }
 
 .header-switch {
-    background-color: color(light, btn-hover);
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
-    background-image: url('/src/assets/img/darkmode.svg');
-    background-position: center;
-    cursor: pointer;
+  background-color: color(light, btn-hover);
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background-image: url('/src/assets/img/darkmode.svg');
+  background-position: center;
+  cursor: pointer;
 
-    :global(.dark-theme) & {
-        background-image: url('/src/assets/img/lightmode.svg');
-    }
+  :global(.dark-theme) & {
+    background-image: url('/src/assets/img/lightmode.svg');
+  }
 }

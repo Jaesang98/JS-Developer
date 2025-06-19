@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from '@/assets/styles/pages/auth.module.scss';
@@ -15,23 +15,24 @@ import { useUserInfoStore } from '@/stores/useStore';
 function Login() {
   // 데이터 흐름
   const navigate = useNavigate();
-  const { setUser } = useUserInfoStore();
+  const { emailCheck, savedEmail, saveEmail, userInfo, setUser } = useUserInfoStore();
 
   //모달창 변수
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertContent, setAlertContent] = useState('');
 
   // 그 외 변수
-  const [userId, setUserId] = useState('');
+  const [email, setEmail] = useState('');
   const [passWord, setPassWord] = useState('');
+  const [saveEmailCheck, setSaveEmailCheck] = useState(false);
 
   // 서버통신
   const loginJWTMutation = useLoginJWTMutation();
 
   const validation = async () => {
-    if (userId == '' || passWord == '') {
+    if (email == '' || passWord == '') {
       setAlertOpen(true);
-      setAlertContent('아이디 또는 비밀번호를 확인해주세요.');
+      setAlertContent('이메일 또는 비밀번호를 확인해주세요.');
     } else {
       await loginJWT();
     }
@@ -40,23 +41,37 @@ function Login() {
   const loginJWT = async () => {
     loginJWTMutation.mutate(
       {
-        userId: userId,
+        email: email,
         passWord: passWord || '',
       },
       {
         onSuccess: async (data) => {
-          if (data?.userInfo) {
-            setUser(data.userInfo);
+          if (data?.success) {
+            saveEmail(saveEmailCheck, email);
+            setUser(data.data.userInfo);
             await navigate('/');
+          } else {
+            saveEmail(saveEmailCheck, email);
+            setAlertOpen(true);
+            setAlertContent('이메일 또는 비밀번호가 틀렸습니다');
           }
         },
         onError: async () => {
           setAlertOpen(true);
-          setAlertContent('아이디 또는 비밀번호가 틀렸습니다');
+          setAlertContent('로그인에 실패하였습니다.');
         },
       },
     );
   };
+
+  // 이메일 저장 체크
+  useEffect(() => {
+    if (emailCheck) {
+      console.log(savedEmail);
+      setEmail(savedEmail);
+      setSaveEmailCheck(emailCheck);
+    }
+  }, []);
 
   return (
     <MainLayout>
@@ -77,15 +92,16 @@ function Login() {
 
           <div className={styles['login-input']}>
             <Input
-              placeholder={'아이디'}
+              placeholder={'이메일'}
               onChange={(e) => {
-                setUserId(e.target.value);
+                setEmail(e.target.value);
               }}
               onKeyDown={async (e) => {
                 if (e.key === 'Enter') {
                   await validation();
                 }
               }}
+              defaultValue={email}
             ></Input>
             <Input
               placeholder={'비밀번호'}
@@ -102,7 +118,7 @@ function Login() {
           </div>
 
           <div className={styles['login-check']}>
-            <CheckBox label={'아이디 저장'}></CheckBox>
+            <CheckBox label={'이메일 저장'} onChange={setSaveEmailCheck} checked={saveEmailCheck}></CheckBox>
           </div>
 
           <div className={styles['login-btn']}>
