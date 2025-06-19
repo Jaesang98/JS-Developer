@@ -48,7 +48,7 @@ function Header() {
           className={styles['header-item']}
           onClick={async () => {
             if (userInfo.email == '') {
-              await navigate('/Register');
+              await navigate('/register');
             } else {
               await navigate('/Mypage');
             }

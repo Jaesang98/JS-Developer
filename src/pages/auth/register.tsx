@@ -29,7 +29,7 @@ function Register() {
               children={'ID/PW 회원가입'}
               width={320}
               onClick={async () => {
-                await navigate('/Create');
+                await navigate('/register/email');
               }}
             ></Button>
           </div>
