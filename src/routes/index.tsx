@@ -24,7 +24,7 @@ const Router = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/register/email" element={<Register_JWT />} />
         <Route path="/EditInfo" element={<EditInfo />} />
-        <Route path="/Mypage" element={<Mypage />} />
+        <Route path="/mypage" element={<Mypage />} />
         <Route path="/Devx" element={<Devx />} />
         <Route path="/Devx/:id" element={<DevxDetail />} />
         <Route path="/Edit" element={<DevxEdit />} />

@@ -50,7 +50,7 @@ function Header() {
             if (userInfo.email == '') {
               await navigate('/register');
             } else {
-              await navigate('/Mypage');
+              await navigate('/mypage');
             }
           }}
         >
@@ -64,7 +64,6 @@ function Header() {
           variant={'btn1'}
           children={userInfo.email == '' ? '로그인' : '로그아웃'}
           onClick={async () => {
-            console.log(userInfo.email);
             if (userInfo.email) {
               logout();
               await navigate('/');

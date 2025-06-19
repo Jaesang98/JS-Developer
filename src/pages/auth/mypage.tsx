@@ -17,8 +17,6 @@ function Mypage() {
   const navigate = useNavigate();
   const { userInfo, logout } = useUserInfoStore();
 
-  console.log(userInfo);
-
   //모달창 변수
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertContent, setAlertContent] = useState('');
@@ -80,17 +78,20 @@ function Mypage() {
 
           <div className={styles['mypage-input']}>
             <div className={styles['edit-description']}>아이디</div>
-            <Input defaultValue={userInfo.userId} disabled={true}></Input>
+            <Input defaultValue={userInfo.email} disabled={true}></Input>
           </div>
 
           <div className={styles['mypage-input']}>
             <div className={styles['edit-description']}>이름</div>
-            <Input defaultValue={userInfo.userName} disabled={true}></Input>
+            <Input defaultValue={userInfo.name} disabled={true}></Input>
           </div>
 
           <div className={styles['mypage-input']}>
             <div className={styles['edit-description']}>연결된 계정</div>
-            <Input defaultValue={userInfo.loginType == 'LOCAL' ? '' : userInfo.loginType} disabled={true}></Input>
+            <Input
+              defaultValue={userInfo.loginType == 'LOCAL' ? userInfo.email : userInfo.loginType}
+              disabled={true}
+            ></Input>
           </div>
           <div className={`${styles['mypage-btn']} ${styles['divide']}`}>
             <Button
