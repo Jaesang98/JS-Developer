@@ -1,11 +1,11 @@
 import instance from '@/api/axiosInstance';
 
-export const fetchGetAuthDuplicate = async (userId: string) => {
+export const fetchGetAuthCheckId = async (email: string) => {
   const response = await instance({
     method: 'GET',
-    url: 'member/duplicate',
+    url: 'member/check-id',
     params: {
-      userId: userId,
+      email: email,
     },
   });
   return response.data;

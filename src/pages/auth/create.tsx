@@ -8,7 +8,7 @@ import Input from '@/components/ui/input';
 import BaseModal from '@/components/ui/modal/BaseModal';
 import AlertModal from '@/components/ui/modal/AlertModal';
 
-import { useAuthDuplicateQuery } from '@/queries/auth/useDuplicationQuery';
+import { useAuthDuplicateQuery } from '@/queries/auth/useAuthCheckIdQuery';
 import { useSignUpJWTMutation } from '@/queries/auth/useSignUpJWTMutation';
 import { useUserInfoStore } from '@/stores/useStore';
 
