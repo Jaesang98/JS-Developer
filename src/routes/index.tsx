@@ -4,7 +4,7 @@ import Login from '@/pages/auth/login';
 import Register from '@/pages/auth/register';
 import EditInfo from '@/pages/auth/editinfo';
 import Mypage from '@/pages/auth/mypage';
-import Create from '@/pages/auth/create';
+import Register_JWT from '@/pages/auth/register_jwt';
 import Devx from '@/pages/devx';
 import DevxDetail from '@/pages/devx/detail';
 import DevxEdit from '@/pages/devx/edit';
@@ -22,7 +22,7 @@ const Router = () => {
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/register/email" element={<Create />} />
+        <Route path="/register/email" element={<Register_JWT />} />
         <Route path="/EditInfo" element={<EditInfo />} />
         <Route path="/Mypage" element={<Mypage />} />
         <Route path="/Devx" element={<Devx />} />

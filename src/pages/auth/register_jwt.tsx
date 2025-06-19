@@ -12,7 +12,7 @@ import { useAuthCheckIdQuery } from '@/queries/auth/useAuthCheckIdQuery';
 import { useSignUpJWTMutation } from '@/queries/auth/useSignUpJWTMutation';
 import { useUserInfoStore } from '@/stores/useStore';
 
-function Create() {
+function Register_JWT() {
   // 데이터 흐름
   const navigate = useNavigate();
   const { setUser } = useUserInfoStore();
@@ -25,6 +25,8 @@ function Create() {
   const [email, setEmail] = useState('');
   const [checkEmail, setCheckEmail] = useState(false);
   const [passWord, setpassWord] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const regex = /^(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{10,}$/;
 
@@ -37,6 +39,12 @@ function Create() {
     if (!checkEmail) {
       setAlertOpen(true);
       setAlertContent('아이디 중복 확인을 해주세요.');
+    } else if (name == '') {
+      setAlertOpen(true);
+      setAlertContent('이름을 적어주세요.');
+    } else if (phone == '') {
+      setAlertOpen(true);
+      setAlertContent('핸드폰 번호를 적어주세요.');
     } else if (passWord != confirmPassword) {
       setAlertOpen(true);
       setAlertContent('비밀번호가 서로 일치하지 않습니다.');
@@ -111,9 +119,17 @@ function Create() {
               children={'중복 확인'}
               width={320}
               onClick={async () => {
-                if (email != '') {
-                  await refetch();
-                  setCheckEmail(true);
+                if (email !== '') {
+                  const response = await refetch();
+                  const result = response.data;
+
+                  if (result?.success) {
+                    setCheckEmail(true);
+                  } else {
+                    setCheckEmail(false);
+                    setAlertOpen(true);
+                    setAlertContent('이미 사용 중인 아이디입니다.');
+                  }
                 } else {
                   setAlertOpen(true);
                   setAlertContent('아이디를 작성해주세요.');
@@ -129,7 +145,31 @@ function Create() {
           </div>
 
           <div className={styles['register-input']}>
-            <div className={styles['edit-description']}>새 비밀번호</div>
+            <div className={styles['edit-description']}>이름</div>
+            <Input
+              placeholder={'이름'}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              onKeyDown={async (e) => {
+                if (e.key === 'Enter') {
+                  await validation();
+                }
+              }}
+            ></Input>
+            <div className={styles['edit-description']}>핸드폰 번호</div>
+            <Input
+              placeholder={'핸드폰 번호'}
+              onChange={(e) => {
+                setPhone(e.target.value);
+              }}
+              onKeyDown={async (e) => {
+                if (e.key === 'Enter') {
+                  await validation();
+                }
+              }}
+            ></Input>
+            <div className={styles['edit-description']}>비밀번호</div>
             <Input
               type={'password'}
               placeholder={'비밀번호'}
@@ -179,4 +219,4 @@ function Create() {
   );
 }
 
-export default Create;
+export default Register_JWT;
