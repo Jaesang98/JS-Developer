@@ -5,9 +5,9 @@ export const useDevxDeleteMutation = () => {
   const queryClient = useQueryClient();
 
   const AddDevxMutation = useMutation({
-    mutationFn: ({ dictId }: { dictId: string }) => fetchPostDeleteDevx(dictId),
+    mutationFn: ({ id }: { id: string }) => fetchPostDeleteDevx(id),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['devx', 'delete'] });
+      await queryClient.invalidateQueries({ queryKey: ['dictionary', 'delete'] });
     },
   });
   return AddDevxMutation;

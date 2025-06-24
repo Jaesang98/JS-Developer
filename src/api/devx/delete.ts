@@ -1,11 +1,11 @@
 import instance from '@/api/axiosInstance';
 
-export const fetchPostDeleteDevx = async (dictId: string) => {
+export const fetchPostDeleteDevx = async (id: string) => {
   const response = await instance({
     method: 'POST',
-    url: 'dict/delete',
+    url: 'dictionary/delete',
     data: {
-      dictId: dictId,
+      id: id,
     },
   });
   return response.data;

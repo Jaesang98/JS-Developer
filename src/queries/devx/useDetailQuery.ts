@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchGetDevxDetail } from '@/api/devx/detail';
 
-export const useDevxDetailQuery = (dictId: string, queryConfig = {}) => {
+export const useDevxDetailQuery = (id: string, queryConfig = {}) => {
   return useQuery({
-    queryKey: ['devx', 'detail', dictId],
-    queryFn: () => fetchGetDevxDetail(dictId),
+    queryKey: ['dictionary', 'detail', id],
+    queryFn: () => fetchGetDevxDetail(id),
     retry: 3,
-    enabled: !!dictId,
+    enabled: !!id,
     ...queryConfig,
   });
 };

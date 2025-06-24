@@ -24,8 +24,8 @@ function Devx() {
 
   // dictList 데이터 가공
   useEffect(() => {
-    if (data?.dictList) {
-      setDictList(data.dictList);
+    if (data?.data) {
+      setDictList(data?.data);
     }
   }, [data]);
 
@@ -84,13 +84,13 @@ function Devx() {
               <div
                 key={idx}
                 onClick={async () => {
-                  await navigate(`/Devx/${item.dictId}`);
+                  await navigate(`/Devx/${item.id}`);
                 }}
               >
                 <Card
                   title={item.dictTitle}
                   content={item.dictDescription}
-                  name={item.userName}
+                  name={item.username}
                   date={item.updated.slice(0, 10)}
                   children={undefined}
                 />

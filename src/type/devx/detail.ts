@@ -3,10 +3,10 @@ export interface DevxListDetail {
 }
 
 export interface DevxItem {
-  dictId: string;
-  userId: string;
+  id: string;
+  userid: string;
   dictTitle: string;
   dictDescription: string;
-  userName: string;
+  username: string;
   updated: string;
 }

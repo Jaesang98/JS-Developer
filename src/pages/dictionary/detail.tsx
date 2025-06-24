@@ -29,7 +29,7 @@ function DevxDetail() {
 
   useEffect(() => {
     if (data) {
-      setDictDetail(data.dictListDetail);
+      setDictDetail(data.data);
     }
   }, [data]);
 
@@ -93,7 +93,7 @@ function DevxDetail() {
               </div>
             </div>
             <div className={styles['devxdetail-info']}>
-              <div className={styles['devxdetail-name']}>작성자 : {dictDetail?.userName}</div>
+              <div className={styles['devxdetail-name']}>작성자 : {dictDetail?.username}</div>
               <div className={styles['devxdetail-date']}>작성일 : {dictDetail?.updated}</div>
             </div>
             {dictDetail?.dictDescription ? (
