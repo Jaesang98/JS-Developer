@@ -36,7 +36,7 @@ function DevxDetail() {
   const deleteDict = () => {
     deleteMutation.mutate(
       {
-        dictId: dictId || '',
+        id: dictId || '',
       },
       {
         onSuccess: async () => {
