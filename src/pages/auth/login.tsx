@@ -15,7 +15,7 @@ import { useUserInfoStore } from '@/stores/useStore';
 function Login() {
   // 데이터 흐름
   const navigate = useNavigate();
-  const { emailCheck, savedEmail, saveEmail, setUser } = useUserInfoStore();
+  const { emailCheck, savedEmail, saveEmail, setUser, setToken } = useUserInfoStore();
 
   //모달창 변수
   const [alertOpen, setAlertOpen] = useState(false);
@@ -49,6 +49,7 @@ function Login() {
           if (data?.success) {
             saveEmail(saveEmailCheck, email);
             setUser(data.data.userInfo);
+            setToken(data.data.grantType, data.data.accessToken, data.data.refreshToken);
             await navigate('/');
           } else {
             saveEmail(saveEmailCheck, email);

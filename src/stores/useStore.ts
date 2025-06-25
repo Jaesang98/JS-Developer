@@ -7,6 +7,7 @@ import type { UserStore, UserInfo, DarkMode } from '@/type/useStore';
 const useUserInfoStore = create<UserStore>()(
   persist(
     (set) => ({
+      // 유저정보
       userInfo: {
         email: '',
         name: '',
@@ -20,8 +21,30 @@ const useUserInfoStore = create<UserStore>()(
         role: '',
       },
 
+      //토큰
+      accessToken: '',
+      refreshToken: '',
+      grantType: '',
+
+      // 유저정보 저장
       setUser: (user: UserInfo) => set({ userInfo: user }),
 
+      //토큰저장
+      setToken: (grantType: string, accessToken: string, refreshToken: string) =>
+        set(() => ({
+          grantType,
+          accessToken,
+          refreshToken,
+        })),
+
+      clearToken: () =>
+        set(() => ({
+          grantType: '',
+          accessToken: '',
+          refreshToken: '',
+        })),
+
+      // 이메일 저장
       emailCheck: false,
       savedEmail: '',
 
@@ -31,6 +54,7 @@ const useUserInfoStore = create<UserStore>()(
           savedEmail: save ? email : '',
         })),
 
+      // 로그아웃
       logout: () =>
         set((state) => {
           return {

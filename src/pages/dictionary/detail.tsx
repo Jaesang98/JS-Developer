@@ -98,10 +98,7 @@ function DevxDetail() {
             </div>
             {dictDetail?.dictDescription ? (
               <div className={styles['devxdetail-code']}>
-                <MDEditor.Markdown
-                  source={dictDetail?.dictDescription}
-                  style={{ whiteSpace: 'pre-wrap', padding: '1.5rem', minHeight: 320 }}
-                />
+                <MDEditor.Markdown source={dictDetail?.dictDescription} style={{ padding: '1.5rem', minHeight: 320 }} />
               </div>
             ) : (
               ''

@@ -11,7 +11,6 @@ import AlertModal from '@/components/ui/modal/AlertModal';
 
 import { useDevxDuplicateQuery } from '@/queries/devx/useDuplicationQuery';
 import { useDevxAddMutation } from '@/queries/devx/useAddQuery';
-import { useDevxUpdateMutation } from '@/queries/devx/useUpdateQuery';
 
 function DevxEdit() {
   // 데이터 흐름
@@ -32,17 +31,16 @@ function DevxEdit() {
   // 서버통신
   const { data, refetch } = useDevxDuplicateQuery(searchInput);
   const addMutation = useDevxAddMutation();
-  const updateMutation = useDevxUpdateMutation();
 
   const validation = async () => {
     const result = await refetch();
-    if (result.data.result == false) {
+    if (result.data.success) {
+      setAlertOpen(false);
+      setValidate(true);
+    } else {
       setAlertOpen(true);
       setAlertContent('중복되는 단어가 존재합니다');
       setValidate(false);
-    } else {
-      setAlertOpen(false);
-      setValidate(true);
     }
   };
 
@@ -73,9 +71,8 @@ function DevxEdit() {
 
   const updateDict = () => {
     if (dictData?.dictTitle === searchInput || validate) {
-      updateMutation.mutate(
+      addMutation.mutate(
         {
-          dictId: dictData.dictId,
           dictTitle: searchInput,
           dictDescription: value || '',
         },
@@ -156,7 +153,7 @@ function DevxEdit() {
                 onClick={validation}
               ></Button>
             </div>
-            {data?.result == true ? <div className={styles['devxedit-success']}>등록 가능한 단어입니다.</div> : ''}
+            {data?.success == true ? <div className={styles['devxedit-success']}>등록 가능한 단어입니다.</div> : ''}
           </div>
 
           <div className={styles['devxedit-description']}>

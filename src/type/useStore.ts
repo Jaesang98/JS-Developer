@@ -1,7 +1,11 @@
 // 로그인 시 받는 사용자 정보
 export interface UserStore {
   userInfo: UserInfo;
+  grantType: string;
+  accessToken: string;
+  refreshToken: string;
   setUser: (user: UserInfo) => void;
+  setToken: (grantType: string, accessToken: string, refreshToken: string) => void;
   logout: () => void;
 
   emailCheck: boolean;
