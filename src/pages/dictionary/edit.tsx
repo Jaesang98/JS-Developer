@@ -48,6 +48,7 @@ function DevxEdit() {
     if (validate) {
       addMutation.mutate(
         {
+          id: dictData.id,
           dictTitle: searchInput,
           dictDescription: value || '',
         },
@@ -73,6 +74,7 @@ function DevxEdit() {
     if (dictData?.dictTitle === searchInput || validate) {
       addMutation.mutate(
         {
+          id: dictData.id,
           dictTitle: searchInput,
           dictDescription: value || '',
         },
