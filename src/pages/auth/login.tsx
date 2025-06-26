@@ -68,7 +68,6 @@ function Login() {
   // 이메일 저장 체크
   useEffect(() => {
     if (emailCheck) {
-      console.log(savedEmail);
       setEmail(savedEmail);
       setSaveEmailCheck(emailCheck);
     }

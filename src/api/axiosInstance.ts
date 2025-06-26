@@ -22,8 +22,6 @@ instance.interceptors.request.use(
       config.headers.refreshToken = refreshToken;
     }
 
-    console.log(config.headers);
-
     return config;
   },
   (error) => Promise.reject(error),
