@@ -3,7 +3,7 @@ export interface GuideList {
 }
 
 export interface GuideItem {
-  menuDesId: string;
+  descriptionId: string;
   menuId: string;
   menuName: string;
   imageUrl: string;

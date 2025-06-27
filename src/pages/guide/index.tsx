@@ -38,14 +38,33 @@ function Guide() {
   // 첫 화면 진입 시 메뉴 전부 펼쳐짐
   useEffect(() => {
     if (menuData?.data) {
-      setMenuList(menuData.data);
+      const treeMenu = new Map<string, MenuItem>();
+
+      menuData.data.forEach((item: MenuItem) => {
+        treeMenu.set(item.menuId, { ...item, children: [] });
+      });
+
+      const tree: MenuItem[] = [];
+
+      menuData.data.forEach((item: MenuItem) => {
+        if (item.parentId) {
+          const parent = treeMenu.get(item.parentId);
+          if (parent) {
+            parent.children!.push(treeMenu.get(item.menuId)!);
+          }
+        } else {
+          tree.push(treeMenu.get(item.menuId)!);
+        }
+      });
+      setMenuList(tree);
 
       // 1Depth 모두 펼치기
       const allMenu1Indexes = menuData.data.map((_: MenuItem, index: number) => index);
       setMenu1Click(allMenu1Indexes);
 
       // 기본 2Depth 선택: 첫 번째 1Depth의 첫 번째 자식
-      const firstMenu2 = menuData.data[0]?.children[0];
+      const firstMenu1 = tree[0];
+      const firstMenu2 = firstMenu1?.children[0];
       if (firstMenu2) {
         setMenu2Click({ parentIndex: 0, childIndex: 0 });
         setMenu2ClickId(firstMenu2.menuId);
@@ -134,7 +153,7 @@ function Guide() {
 
             <hr className={styles['divider-28']}></hr>
 
-            <Input variant="input1" width={290} placeholder={'Search'}></Input>
+            {/* <Input variant="input1" width={290} placeholder={'Search'}></Input> */}
 
             <div className={styles['guide-meun']}>
               {menuList?.map((menuItem1: MenuItem, index1: number) => (
@@ -242,21 +261,21 @@ function Guide() {
                   </div>
                 </div>
 
-                <div className={styles['guide-descBlock']}>
+                {/* <div className={styles['guide-descBlock']}>
                   <div className={styles['guide-description']}>
                     {tabClick?.[index] !== undefined
                       ? item?.code[tabClick[index].tabIndex]?.codeDescription
                       : item?.code[0]?.codeDescription}
-                    {/* <MDEditor.Markdown
+                    <MDEditor.Markdown
                       source={
                         tabClick?.[index] !== undefined
                           ? item?.code[tabClick[index].tabIndex]?.codeDescription
                           : item?.code[0]?.codeDescription
                       }
                       style={{ whiteSpace: 'pre-wrap', padding: '1.5rem', minHeight: 320 }}
-                    /> */}
+                    />
                   </div>
-                </div>
+                </div> */}
                 <div className={styles['guide-btnblock']}>
                   <Button
                     variant="btn4"
