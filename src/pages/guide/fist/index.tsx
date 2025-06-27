@@ -10,7 +10,7 @@ import CheckBox from '@/components/ui/checkbox';
 
 import { MenuItem } from '@/type/guide/menu';
 
-import { useGuideMenuDetailQuery } from '@/queries/guide/useMenuDetailQuery';
+import { useGuideMenuQuery } from '@/queries/guide/useMenuQuery';
 
 interface OptionType {
   id: string;
@@ -34,7 +34,7 @@ function FirstPage() {
   const [checkThird, setCheckThird] = useState<boolean>(false);
 
   // 서버 통신 데이터
-  const { refetch } = useGuideMenuDetailQuery(selectId);
+  const { refetch } = useGuideMenuQuery(selectId);
   const [menuValues, setMenuValues] = useState({
     first: { id: '', name: '', isCustom: false },
     second: { id: '', name: '', isCustom: false },

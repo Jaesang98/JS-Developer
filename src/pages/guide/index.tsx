@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import MainLayout from '@/components/layout/MainLayout';
 import styles from '@/assets/styles/pages/guide.module.scss';
 import Button from '@/components/ui/button';
-import Input from '@/components/ui/input';
+// import Input from '@/components/ui/input';
 import MDEditor from '@uiw/react-md-editor';
 
 import { MenuItem } from '@/type/guide/menu';
 import { GuideItem, Code } from '@/type/guide/list';
 
-import { useGuideMenuQuery } from '@/queries/guide/useMenuQuery';
+import { useGuideMenuAllQuery } from '@/queries/guide/useMenuAllQuery';
 import { useGuideListQuery } from '@/queries/guide/useListQuery';
 
 function Guide() {
@@ -27,7 +27,7 @@ function Guide() {
   const [tabClick, setTabClick] = useState<{ menuIndex: number; tabIndex: number }[] | null>([]);
 
   // 서버통신
-  const { data: menuData } = useGuideMenuQuery();
+  const { data: menuData } = useGuideMenuAllQuery();
   const { data: listData } = useGuideListQuery(menu2ClickId, {
     enabled: !!menu2ClickId,
   });

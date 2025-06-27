@@ -1,12 +1,9 @@
 import instance from '@/api/axiosInstance';
 
-export const fetchGetGuideMenu = async (parentId: string) => {
+export const fetchGetGuideMenuAll = async () => {
   const response = await instance({
     method: 'GET',
-    url: 'guide/menu',
-    params: {
-      parentId: parentId,
-    },
+    url: 'guide/menuAll',
   });
   return response.data;
 };
