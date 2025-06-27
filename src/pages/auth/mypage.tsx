@@ -105,7 +105,7 @@ function Mypage() {
               children={'비밀번호 변경'}
               width={240}
               onClick={async () => {
-                await navigate('/EditInfo');
+                await navigate('/mypage/edit/password');
               }}
             ></Button>
           </div>

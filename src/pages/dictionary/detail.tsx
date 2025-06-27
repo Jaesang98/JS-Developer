@@ -83,7 +83,7 @@ function DevxDetail() {
                   variant="btn5"
                   children={'수정'}
                   onClick={async () => {
-                    await navigate(`/Edit/${dictId}`, {
+                    await navigate(`/dectionary/edit/${dictId}`, {
                       state: {
                         data: dictDetail,
                       },

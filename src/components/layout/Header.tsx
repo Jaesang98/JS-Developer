@@ -33,13 +33,13 @@ function Header() {
       </div>
 
       <div className={styles['header-list']}>
-        <div className={styles['header-item']} onClick={() => navigate('/Guide')}>
+        <div className={styles['header-item']} onClick={() => navigate('/guide')}>
           개발 가이드
         </div>
         <div
           className={styles['header-item']}
           onClick={async () => {
-            await navigate('/Devx');
+            await navigate('/dectionary');
           }}
         >
           개발 사전

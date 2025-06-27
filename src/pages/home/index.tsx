@@ -16,9 +16,13 @@ function Home() {
           </div>
           <div className={styles['home-hr']}></div>
           <div className={styles['home-btnWrap']}>
-            <Button variant={'btn2'} children={'시작하기'} onClick={async () => await navigate('/Guide')}></Button>
-            <Button variant={'btn3'} children={'개발 가이드'} onClick={async () => await navigate('/Guide')}></Button>
-            <Button variant={'btn3'} children={'개발 사전'} onClick={async () => await navigate('/Devx')}></Button>
+            <Button variant={'btn2'} children={'시작하기'} onClick={async () => await navigate('/guide')}></Button>
+            <Button variant={'btn3'} children={'개발 가이드'} onClick={async () => await navigate('/guide')}></Button>
+            <Button
+              variant={'btn3'}
+              children={'개발 사전'}
+              onClick={async () => await navigate('/dectionary')}
+            ></Button>
           </div>
         </div>
       </div>

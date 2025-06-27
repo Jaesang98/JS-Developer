@@ -23,14 +23,14 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/register/email" element={<Register_JWT />} />
-        <Route path="/EditInfo" element={<EditInfo />} />
+        <Route path="/mypage/edit/password" element={<EditInfo />} />
         <Route path="/mypage" element={<Mypage />} />
-        <Route path="/Devx" element={<Devx />} />
-        <Route path="/Devx/:id" element={<DevxDetail />} />
-        <Route path="/Edit" element={<DevxEdit />} />
-        <Route path="/Edit/:id" element={<DevxEdit />} />
-        <Route path="/Guide" element={<Guide />} />
-        <Route path="/FirstPage" element={<FirstPage />} />
+        <Route path="/dectionary" element={<Devx />} />
+        <Route path="/dectionary/:id" element={<DevxDetail />} />
+        <Route path="/dectionary/edit" element={<DevxEdit />} />
+        <Route path="/dectionary/edit/:id" element={<DevxEdit />} />
+        <Route path="/guide" element={<Guide />} />
+        <Route path="/write/menu" element={<FirstPage />} />
         <Route path="/SecondPage" element={<SecondPage />} />
         <Route path="/*" element={<Error />} />
       </Routes>

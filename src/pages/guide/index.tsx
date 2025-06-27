@@ -147,7 +147,7 @@ function Guide() {
               variant="btn6"
               children={'작성하기'}
               onClick={async () => {
-                await navigate('/FirstPage');
+                await navigate('/write/menu');
               }}
             ></Button>
 

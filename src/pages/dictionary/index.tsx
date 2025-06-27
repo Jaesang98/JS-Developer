@@ -72,7 +72,7 @@ function Devx() {
               <Button
                 variant="btn5"
                 onClick={async () => {
-                  await navigate('/Edit');
+                  await navigate('/dectionary/edit');
                 }}
               >
                 단어 추가
@@ -84,7 +84,7 @@ function Devx() {
               <div
                 key={idx}
                 onClick={async () => {
-                  await navigate(`/Devx/${item.id}`);
+                  await navigate(`/dectionary/${item.id}`);
                 }}
               >
                 <Card
