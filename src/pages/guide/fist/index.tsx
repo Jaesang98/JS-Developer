@@ -44,9 +44,9 @@ function FirstPage() {
   // 셀렉트 박스 선택 시 값 채우기
   const selectOption = async () => {
     const result = await refetch();
-    if (!result.data) return;
+    if (!result.data.data) return;
 
-    const options = result.data.map((item: MenuItem) => ({
+    const options = result.data.data.map((item: MenuItem) => ({
       id: item.menuId,
       name: item.menuName,
     }));
